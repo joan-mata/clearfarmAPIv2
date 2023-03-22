@@ -17,13 +17,31 @@ def search():
     '''
     animal = request.args.get('animal', default = 'none', type = str)
     farmId = request.args.get('farmId', default = 0, type = int)
-    animalId = args.get('animalId', default = 'cowID', type = str)
-    quantity = args.get('quantity', default = 'last', type = str)
-    timeFrom = args.get('timeFrom', default = '', type = str)
-    timeTo = args.get('timeTo', default = '', type = str)
+    animalId = request.args.get('animalId', default = 'cowID', type = str)
+    quantity = request.args.get('quantity', default = 'last', type = str)
+    timeFrom = request.args.get('timeFrom', default = '', type = str)
+    timeTo = request.args.get('timeTo', default = '', type = str)
 
-    json_object = {"animal": animal}
+    if timeFrom != "":
+            quantity = "Range"
+        
+        if cowNum == "":
+            if quantity == "Last":
+                stringHtml, data = searchLastFarm.searchLastFarm(farmID)
+            elif quantity == "All":
+                stringHtml, data = searchLastFarm.searchLastFarm(farmID)
+            else:
+                stringHtml, data = searchRangeFarm.searchRangeFarm(farmID, timeFrom, timeTo)
+        else:
+            if quantity == "Last":
+                stringHtml, data = searchLastCow.searchLastCow(farmID, cowNum, id)
+            elif quantity == "All":
+                stringHtml, data = searchAllCow.searchAllCow(farmID, cowNum, id)
+            else:
+                stringHtml, data = searchRangeCow.searchRangeCow(farmID, cowNum, id, timeFrom, timeTo)
+                
+        json_object = data
                     
-    return "works"
+    return json_object
 
             
