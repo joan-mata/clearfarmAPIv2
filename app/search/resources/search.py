@@ -7,7 +7,7 @@ import pandas as pd
 from .. import search_bp
 
 
-@search_bp.route('/search') #, methods=['GET'])
+@search_bp.route('/search', methods=['GET'])
 def search():
     '''
     Treath the answers of Cow Form
@@ -15,14 +15,15 @@ def search():
     Args:
         None
     '''
-    
-    args = request.args
-    animal = args.get('animal')
-    farmId = args.get('farmId')
-    
-    json_object  = {"animal": animal,
-                    "farmId": farmId}
+    animal = request.args.get('animal', default = 'none', type = str)
+    farmId = request.args.get('farmId', default = 0, type = int)
+    animalId = args.get('animalId', default = 'cowID', type = str)
+    quantity = args.get('quantity', default = 'last', type = str)
+    timeFrom = args.get('timeFrom', default = '', type = str)
+    timeTo = args.get('timeTo', default = '', type = str)
+
+    json_object = {"animal": animal}
                     
-    return json_object
+    return "works"
 
             
