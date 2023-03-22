@@ -16,6 +16,13 @@ def search():
         None
     '''
     
-    return "hola, entraste"
+    args = request.args
+    animal = args.get('animal')
+    farmId = args.get('farmId')
+    
+    json_object  = {"animal": animal,
+                    "farmId": farmId}
+                    
+    return json_object
 
             
