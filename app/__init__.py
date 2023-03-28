@@ -23,9 +23,9 @@ def create_app():
     from .home import home_bp
     app.register_blueprint(home_bp)
     
-#    from .search import search_bp
-#    app.register_blueprint(search_bp)
-#
+    from .search import search_bp
+    app.register_blueprint(search_bp)
+
     return app
     
     
