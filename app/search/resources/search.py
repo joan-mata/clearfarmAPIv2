@@ -151,7 +151,7 @@ def search():
     if animal == "none":
         value_return  = error_dict["error_animal"]
     #Check values to farmId 
-    elif farmId == "none":
+    elif farmId == 0:
         value_return  = error_dict["error_farmId"]
     #Check if you have inserted animalNum
     elif animalNum != 0:
