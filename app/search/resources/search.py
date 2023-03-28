@@ -12,7 +12,7 @@ from ..functions import searchRangeFarm
 @search_bp.route('/search', methods=['GET'])
 def search():
     '''
-    Presentation to REST-API.
+    Search within REST-API.
     
     Args: {
         animal: {   def: "is the type of animal we want search.",
@@ -154,26 +154,27 @@ def search():
     elif farmId == "none":
         value_return  = error_dict["error_farmId"]
     #Check if you have inserted animalNum
-    elif animalNum == 0:
+    elif animalNum != 0:
         #Check values to animalId
         if animalId == "none":
             value_return  = error_dict["error_animalId"]
-        #Search all animals in farm
+        #Search concrete animal
         else:
             if quantity == "Last":
-                value_return = searchLastFarm.searchLastFarm(farmId)
+                value_return = searchLastCow.searchLastCow(farmId, animalNum, animalId)
             elif quantity == "All":
-                value_return = searchAllFarm.searchAllFarm(farmId)
+                value_return = searchAllCow.searchAllCow(farmId, animalNum, animalId)
             else:
-                value_return = searchRangeFarm.searchRangeFarm(farmId, timeFrom, timeTo)
-    #Search concrete animal
+                value_return = searchRangeCow.searchRangeCow(farmId, animalNum, animalId, timeFrom, timeTo)
+    #Search all animals in farm
     else:
         if quantity == "Last":
-            value_return = searchLastCow.searchLastCow(farmId, animalNum, animalId)
+            value_return = searchLastFarm.searchLastFarm(farmId)
         elif quantity == "All":
-            value_return = searchAllCow.searchAllCow(farmId, animalNum, animalId)
+            value_return = searchAllFarm.searchAllFarm(farmId)
         else:
-            value_return = searchRangeCow.searchRangeCow(farmId, animalNum, animalId, timeFrom, timeTo)
+            value_return = searchRangeFarm.searchRangeFarm(farmId, timeFrom, timeTo)
+        
         
 
     #TODO: Comprove timeFrom format
