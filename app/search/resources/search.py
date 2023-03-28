@@ -1,6 +1,12 @@
 from flask import Flask, request
 
 from .. import search_bp
+from ..functions import searchAllCow
+from ..functions import searchAllFarm
+from ..functions import searchLastCow
+from ..functions import searchLastFarm
+from ..functions import searchRangeCow
+from ..functions import searchRangeFarm
 
 
 @search_bp.route('/search', methods=['GET'])
@@ -45,7 +51,7 @@ def search():
         timeFrom: { def: "lower limit for the range of dates where we want to search information",
                     type: string,
                     required: no,
-                    format date: 'dd/mm/yyyy',
+                    format date: 'YYYY-MM-DD',
                     default: 'none',
                     values: date,
                     comment: "If you insert any value in 'timeFrom', the 'quantity' value are not important, because change automaticaly to 'Range'."
@@ -53,7 +59,7 @@ def search():
         timeTo: {   def: "upper limit for the range of dates where we want to search information",
                     type: string,
                     required: no,
-                    format date: 'dd/mm/yyyy',
+                    format date: 'YYYY-MM-DD',
                     default: 'none',
                     values: "any date greater than 'timeFrom' and smaller than today",
                     comment: "If you do not insert any value in 'timeFrom', the 'timeTo' does not work."
@@ -63,7 +69,7 @@ def search():
     Return: {
         error_animal: "Is required the 'animal' value.",
         error_farmId: "Is required the 'farmId' value.",
-        error_animalId: "Is required the 'animalId' value because you has inserted the 'animalNum' value.",
+        error_animalId: "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
         error_format_timeFrom: "Format of 'timeFrom' is not correct.",
         error_format_timeTo: "Format of 'timeTo' is not correct.",
         error_today_timeFrom: "'timeFrom' value is greater than today's date."
@@ -108,17 +114,17 @@ def search():
         "error_animalId": {
             "type": "error",
             "error_name": "error_animalId",
-            "text": "Is required the 'animalId' value because you has inserted the 'animalNum' value.",
+            "text": "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
         },
         "error_format_timeFrom": {
             "type": "error",
             "error_name": "error_format_timeFrom",
-            "text": "Format of 'timeFrom' is not correct. Correct format is 'dd/mm/yyyy'.",
+            "text": "Format of 'timeFrom' is not correct. Correct format is 'YYYY-MM-DD'.",
         },
         "error_format_timeTo": {
             "type": "error",
             "error_name": "error_format_timeTo",
-            "text": "Format of 'timeTo' is not correct. Correct format is 'dd/mm/yyyy'.",
+            "text": "Format of 'timeTo' is not correct. Correct format is 'YYYY-MM-DD'.",
         },
         "error_today_timeFrom": {
             "type": "error",
@@ -137,22 +143,44 @@ def search():
         }
     }
 
+    #Check if you have inserted timeFrom
+    if timeFrom != 'none':
+        quantity = "Range"
+    
+    #Check values to animal
     if animal == "none":
         value_return  = error_dict["error_animal"]
+    #Check values to farmId 
     elif farmId == "none":
         value_return  = error_dict["error_farmId"]
-    elif animalNum == 0 and animalId == "none":
-        value_return  = error_dict["error_animalId"]
+    #Check if you have inserted animalNum
+    elif animalNum == 0:
+        #Check values to animalId
+        if animalId == "none":
+            value_return  = error_dict["error_animalId"]
+        #Search all animals in farm
+        else:
+            if quantity == "Last":
+                value_return = searchLastFarm.searchLastFarm(farmId)
+            elif quantity == "All":
+                value_return = searchAllFarm.searchAllFarm(farmId)
+            else:
+                value_return = searchRangeFarm.searchRangeFarm(farmId, timeFrom, timeTo)
+    #Search concrete animal
+    else:
+        if quantity == "Last":
+            value_return = searchLastCow.searchLastCow(farmId, animalNum, animalId)
+        elif quantity == "All":
+            value_return = searchAllCow.searchAllCow(farmId, animalNum, animalId)
+        else:
+            value_return = searchRangeCow.searchRangeCow(farmId, animalNum, animalId, timeFrom, timeTo)
+        
 
     #TODO: Comprove timeFrom format
     #TODO: Comprove timeTo format
-    #TODO: Comprove timeFrom < todat
+    #TODO: Comprove timeFrom < today
     #TODO: Comprove timeTo < today
     #TODO: Comprove timeFrom < timeTo
-
-    
-    
-
     
     return value_return
 
