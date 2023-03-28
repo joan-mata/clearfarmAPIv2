@@ -69,6 +69,7 @@ def search():
     Return: {
         error_required_animal: "Is required the 'animal' value.",
         error_required_farmId: "Is required the 'farmId' value.",
+        error_farmId: "Value is smaller than 1."
         error_animalId: "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
         error_format_timeFrom: "Format of 'timeFrom' is not correct.",
         error_format_timeTo: "Format of 'timeTo' is not correct.",
@@ -106,15 +107,10 @@ def search():
             "error_name": "error_required_animal",
             "text": "Is required the 'animal' value.",
         },
-        "error_value_animal": {
-            "type": "error",
-            "error_name": "error_value_animal",
-            "text": "Is required the 'animal' value.",
-        },
         "error_required_farmId": {
             "type": "error",
             "error_name": "error_required_farmId",
-            "text": "Is required the 'farmId' value or the value is not a interger.",
+            "text": "Is required the 'farmId' value or the value is not a integer.",
         },
         "error_farmId": {
             "type": "error",
