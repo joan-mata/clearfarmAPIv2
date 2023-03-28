@@ -8,7 +8,7 @@ def search():
     '''
     Presentation to REST-API.
     
-    Args: [
+    Args: {
         animal: {   def: "is the type of animal we want search.",
                     type: string,
                     required: yes,
@@ -23,7 +23,7 @@ def search():
                 },
         animalId: { def: "identificator for a group of data",
                     type: string,
-                    required: yes,
+                    required: "depending (if your insert a 'animalNum', 'animalId' is required",
                     default: 'none',
                     values: "many and variables",
                     comment: "this args have correlation with 'animalNum'."
@@ -58,7 +58,19 @@ def search():
                     values: "any date greater than 'timeFrom' and smaller than today",
                     comment: "If you do not insert any value in 'timeFrom', the 'timeTo' does not work."
                 },
-    ]
+    }
+    
+    Return: {
+        error_animal: "Is required the 'animal' value.",
+        error_farmId: "Is required the 'farmId' value.",
+        error_animalId: "Is required the 'animalId' value because you has inserted the 'animalNum' value.",
+        error_format_timeFrom: "Format of 'timeFrom' is not correct.",
+        error_format_timeTo: "Format of 'timeTo' is not correct.",
+        error_today_timeFrom: "'timeFrom' value is greater than today's date."
+        error_today_timeTo: "'timeTo' value is greater than today's date."
+        error_small_timeTo: "'timeTo' value is smaller than 'timeFrom' value"
+
+    }
         
     '''
     animal = request.args.get('animal', default = 'none', type = str)
@@ -81,9 +93,67 @@ def search():
     }
     
     #Check values we need
+    #Values are required: animal, farmId, *animalId
+    error_dict = {
+        "error_animal": {
+            "type": "error",
+            "error_name": "error_animal",
+            "text": "Is required the 'animal' value.",
+        },
+        "error_farmId": {
+            "type": "error",
+            "error_name": "error_farmId",
+            "text": "Is required the 'farmId' value.",
+        },
+        "error_animalId": {
+            "type": "error",
+            "error_name": "error_animalId",
+            "text": "Is required the 'animalId' value because you has inserted the 'animalNum' value.",
+        },
+        "error_format_timeFrom": {
+            "type": "error",
+            "error_name": "error_format_timeFrom",
+            "text": "Format of 'timeFrom' is not correct. Correct format is 'dd/mm/yyyy'.",
+        },
+        "error_format_timeTo": {
+            "type": "error",
+            "error_name": "error_format_timeTo",
+            "text": "Format of 'timeTo' is not correct. Correct format is 'dd/mm/yyyy'.",
+        },
+        "error_today_timeFrom": {
+            "type": "error",
+            "error_name": "error_today_timeFrom",
+            "text": "'timeFrom' value must be smaller than today's date."
+        },
+        "error_today_timeTo": {
+            "type": "error",
+            "error_name": "error_today_timeTo",
+            "text": "'timeTo' value must be smaller than today's date."
+        },
+        "error_small_timeTo": {
+            "type": "error",
+            "error_name": "error_small_timeTo",
+            "text": "'timeTo' value must be greater than 'timeFrom' value."
+        }
+    }
+
+    if animal == "none":
+        value_return  = error_dict["error_animal"]
+    elif farmId == "none":
+        value_return  = error_dict["error_farmId"]
+    elif animalNum == 0 and animalId == "none":
+        value_return  = error_dict["error_animalId"]
+
+    #TODO: Comprove timeFrom format
+    #TODO: Comprove timeTo format
+    #TODO: Comprove timeFrom < todat
+    #TODO: Comprove timeTo < today
+    #TODO: Comprove timeFrom < timeTo
+
     
     
+
     
-    return value
+    return value_return
 
             
