@@ -11,7 +11,9 @@ def search():
     Args:
         None
     '''
-    
-    return "REST-API search"
+    animal = "hola"
+#    animal = request.args.get('animal', default = 'none', type = str)
+
+    return "REST-API search" + str(animal)
 
             
