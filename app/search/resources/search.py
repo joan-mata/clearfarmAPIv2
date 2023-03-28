@@ -67,8 +67,8 @@ def search():
     }
     
     Return: {
-        error_animal: "Is required the 'animal' value.",
-        error_farmId: "Is required the 'farmId' value.",
+        error_required_animal: "Is required the 'animal' value.",
+        error_required_farmId: "Is required the 'farmId' value.",
         error_animalId: "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
         error_format_timeFrom: "Format of 'timeFrom' is not correct.",
         error_format_timeTo: "Format of 'timeTo' is not correct.",
@@ -101,15 +101,20 @@ def search():
     #Check values we need
     #Values are required: animal, farmId, *animalId
     error_dict = {
-        "error_animal": {
+        "error_required_animal": {
             "type": "error",
-            "error_name": "error_animal",
+            "error_name": "error_required_animal",
+            "text": "Is required the 'animal' value.",
+        },
+        "error_value_animal": {
+            "type": "error",
+            "error_name": "error_value_animal",
             "text": "Is required the 'animal' value.",
         },
         "error_farmId": {
             "type": "error",
             "error_name": "error_farmId",
-            "text": "Is required the 'farmId' value.",
+            "text": "Is required the 'farmId' value or values is smaller than 1.",
         },
         "error_animalId": {
             "type": "error",
@@ -149,10 +154,10 @@ def search():
     
     #Check values to animal
     if animal == "none":
-        value_return  = error_dict["error_animal"]
+        value_return  = error_dict["error_required_animal"]
     #Check values to farmId 
-    elif farmId == 0:
-        value_return  = error_dict["error_farmId"]
+    elif farmId <= 0:
+        value_return  = error_dict["error_required_farmId"]
     #Check if you have inserted animalNum
     elif animalNum != 0:
         #Check values to animalId
@@ -183,6 +188,6 @@ def search():
     #TODO: Comprove timeTo < today
     #TODO: Comprove timeFrom < timeTo
     
-    return value_return
+    return farmId
 
             
