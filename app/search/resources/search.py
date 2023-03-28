@@ -64,6 +64,7 @@ def search():
     
     value = {
             "animal": animal,
+            "farmId": farmId,
             "animalId": animalId,
             "animalNum": animalNum,
             "quantity": quantity,
