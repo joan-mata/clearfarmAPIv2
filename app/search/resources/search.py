@@ -61,7 +61,16 @@ def search():
     quantity = request.args.get('quantity', default = 'Last', type = str)
     timeFrom = request.args.get('timeFrom', default = 'none', type = str)
     timeTo = request.args.get('timeTo', default = 'none', type = str)
-
-    return "REST-API search " + str(animal)
+    
+    value = {
+            "animal": animal,
+            "animalId": animalId,
+            "animalNum": animalNum,
+            "quantity": quantity,
+            "timeFrom": timeFrom,
+            "timeTo": timeTo,
+    }
+    
+    return value
 
             
