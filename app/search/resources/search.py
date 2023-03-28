@@ -111,10 +111,15 @@ def search():
             "error_name": "error_value_animal",
             "text": "Is required the 'animal' value.",
         },
+        "error_required_farmId": {
+            "type": "error",
+            "error_name": "error_required_farmId",
+            "text": "Is required the 'farmId' value or the value is not a interger.",
+        },
         "error_farmId": {
             "type": "error",
             "error_name": "error_farmId",
-            "text": "Is required the 'farmId' value or values is smaller than 1.",
+            "text": "Value is smaller than 1.",
         },
         "error_animalId": {
             "type": "error",
@@ -157,7 +162,10 @@ def search():
         value_return  = error_dict["error_required_animal"]
     #Check values to farmId 
     elif farmId <= 0:
-        value_return  = error_dict["error_farmId"]
+        if farmId == 0:
+            value_return  = error_dict["error_required_farmId"]
+        else:
+            value_return  = error_dict["error_farmId"]
     #Check if you have inserted animalNum
     elif animalNum != 0:
         #Check values to animalId
@@ -188,6 +196,6 @@ def search():
     #TODO: Comprove timeTo < today
     #TODO: Comprove timeFrom < timeTo
     
-    return str(farmId)
+    return value_return
 
             
