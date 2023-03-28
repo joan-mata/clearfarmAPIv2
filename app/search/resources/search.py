@@ -188,6 +188,6 @@ def search():
     #TODO: Comprove timeTo < today
     #TODO: Comprove timeFrom < timeTo
     
-    return farmId
+    return str(farmId)
 
             
