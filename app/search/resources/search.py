@@ -1,6 +1,6 @@
 from flask import Flask
 
-from .. import home_bp
+from .. import search_bp
 
 
 @search_bp.route('/search')
