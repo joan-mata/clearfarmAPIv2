@@ -157,7 +157,7 @@ def search():
         value_return  = error_dict["error_required_animal"]
     #Check values to farmId 
     elif farmId <= 0:
-        value_return  = error_dict["error_required_farmId"]
+        value_return  = error_dict["error_farmId"]
     #Check if you have inserted animalNum
     elif animalNum != 0:
         #Check values to animalId
