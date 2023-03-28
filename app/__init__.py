@@ -20,9 +20,12 @@ def create_app():
     #db.init_app(app)
 
     # Registro de los Blueprints
-    from .search import search_bp
-    app.register_blueprint(search_bp)
+    from .home import home_bp
+    app.register_blueprint(home_bp)
     
+#    from .search import search_bp
+#    app.register_blueprint(search_bp)
+#
     return app
     
     
