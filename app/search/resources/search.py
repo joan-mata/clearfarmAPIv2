@@ -62,7 +62,7 @@ def search():
     timeFrom = request.args.get('timeFrom', default = 'none', type = str)
     timeTo = request.args.get('timeTo', default = 'none', type = str)
     
-        value = {
+    value = {
             "animal": animal,
             "farmId": farmId,
             "animalId": animalId,
