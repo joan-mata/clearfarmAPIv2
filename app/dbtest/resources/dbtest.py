@@ -50,6 +50,6 @@ def dbtest():
     return_value = redirect('/errors')
     
     
-    return return_value
+    return return_value["error_required_animal"]
 
             
