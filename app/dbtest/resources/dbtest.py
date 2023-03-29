@@ -47,9 +47,8 @@ def dbtest():
         }
     }
     
-    return_value = redirect('/errors')
+    dict = redirect('/errors')
+    return_value = dict["error_required_animal"]
     
-    
-    return return_value["error_required_animal"]
-
+    return return_value
             
