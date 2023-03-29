@@ -14,9 +14,9 @@ def home():
         None
     '''
     
-    farmID = 155
+    farmID = "155"
     id = "cowID"
-    cowNum = 43490
+    cowNum = "43490"
     
     reference_list = list(db_cows["reference"].find())
     
