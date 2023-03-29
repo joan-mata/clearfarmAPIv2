@@ -159,6 +159,6 @@ def search():
     #TODO: Comprove timeTo < today
     #TODO: Comprove timeFrom < timeTo
     
-    return str(value_return)
+    return value_return
 
             

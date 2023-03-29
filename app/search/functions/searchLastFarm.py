@@ -25,6 +25,4 @@ def searchLastFarm(farmID):
             data.update({str(index): temporalData[0]})
             index += 1
 
-    print("DATA " + str(type(data)))
-
     return data
