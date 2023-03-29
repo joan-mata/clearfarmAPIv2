@@ -15,7 +15,7 @@ def home():
     '''
     
     return_value = {
-        "db": db_cows
+        "db": str(db_cows)
     }
     
     
