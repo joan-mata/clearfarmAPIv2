@@ -127,7 +127,7 @@ def search():
                             "text": "Value is smaller than 1.",
                             }
     #Check if you have inserted animalNum
-    elif animalNum != 0:
+    elif animalNum != "0":
         #Check values to animalId
         if animalId == "none":
             value_return  = { "type": "error",
