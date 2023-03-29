@@ -26,7 +26,8 @@ def home():
     
     
     
-    return_value = {{
+    return_value = {
+    "0": {
         "db": str(db_cows),
         "farmId": farmID,
         "animalId": id,
@@ -35,7 +36,7 @@ def home():
         "referenceIds": str(referenceIds),
         "newfind": str(newfind[0])
     },
-    {
+    "1": {
         "db": str(db_cows),
         "farmId": farmID,
         "animalId": id,
