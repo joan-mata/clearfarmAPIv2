@@ -1,5 +1,7 @@
 from flask import Flask
 
+from app import db_cows
+
 from .. import dbtest_bp
 
 
@@ -12,6 +14,12 @@ def home():
         None
     '''
     
-    return "Welcome to dbTest."
+    return_value = {
+        "db": db_cows
+    }
+    
+    
+    
+    return return_value
 
             
