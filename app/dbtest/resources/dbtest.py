@@ -6,7 +6,7 @@ from .. import dbtest_bp
 
 
 @dbtest_bp.route('/dbtest')
-def home():
+def dbtest():
     '''
     Welcome to dbTest
     
