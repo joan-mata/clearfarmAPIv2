@@ -26,7 +26,7 @@ def home():
     return_value = {
         "db": str(db_cows),
         "reference_list": str(reference_list[0]),
-        "referenceIds": str(referenceIds[0])
+        "referenceIds": str(referenceIds)
     }
     
     
