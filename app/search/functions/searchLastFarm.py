@@ -22,7 +22,7 @@ def searchLastFarm(farmID):
         
         if temporalData:
 #            data.append(temporalData[0])
-            data.update(index: temporalData[0])
+            data.update({index: temporalData[0]})
             index += 1
 
     return data
