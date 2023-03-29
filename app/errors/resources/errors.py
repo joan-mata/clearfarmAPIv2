@@ -33,12 +33,11 @@ def errors():
             "name": "error_required_animalId",
             "text": "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
         },
-    "error_value_animalId”: {
+        "error_value_animalId": {
             "type": "error",
             "name": "error_value_animalId",
             "text": "It is possible that you have not correctly selected the 'AnimalId' value.",
         },
-
         "error_format_timeFrom": {
             "type": "error",
             "name": "error_format_timeFrom",
@@ -64,8 +63,8 @@ def errors():
             "name": "error_small_timeTo",
             "text": "'timeTo' value must be greater than 'timeFrom' value."
         },
-     “no_data_animalNum”: {
-            "type": “no_data”,
+        "no_data_animalNum": {
+            "type": "no_data",
             "name": "no_data_animalNum",
             "text": "No information about this animal in this farm"
         },
