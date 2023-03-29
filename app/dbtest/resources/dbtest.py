@@ -14,12 +14,19 @@ def home():
         None
     '''
     
+    farmID = 155
+    id = "cowID"
+    cowNum = 43490
+    
     reference_list = list(db_cows["reference"].find())
+    
+    referenceIds = list(db_cows["reference"].find({"$and":[{"farmID": farmID},{id: cowNum}]}).sort("$natural", -1))
     
     
     return_value = {
         "db": str(db_cows),
-        "reference_list": str(reference_list[0])
+        "reference_list": str(reference_list[0]),
+        "referenceIds": str(referenceIds[0])
     }
     
     
