@@ -48,7 +48,7 @@ def dbtest():
     }
     
     dict = redirect('/errors')
-    return_value = str(type(dict))
+    return_value = dict
     
     return return_value
             
