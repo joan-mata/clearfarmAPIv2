@@ -27,7 +27,7 @@ def searchRangeCow(farmID, cowNum, id, timeFrom, timeTo):
     
     #find id's in reference collection
     referenceIds = list(db_cows["reference"].find({"$and":[{"farmID": farmID},{id: cowNum}]}).sort("$natural", -1))
-            
+    
     if referenceIds:
         referenceIds = referenceIds[0]
     else:
