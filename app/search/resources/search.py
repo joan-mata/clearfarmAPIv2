@@ -82,9 +82,9 @@ def search():
         
     '''
     animal = request.args.get('animal', default = 'none', type = str)
-    farmId = request.args.get('farmId', default = '0', type = str)
+    farmId = str(request.args.get('farmId', default = 0, type = int))
     animalId = request.args.get('animalId', default = 'none', type = str)
-    animalNum = request.args.get('animalNum', default = '0', type = str)
+    animalNum = str(request.args.get('animalNum', default = 0, type = int))
     quantity = request.args.get('quantity', default = 'Last', type = str)
     timeFrom = request.args.get('timeFrom', default = 'none', type = str)
     timeTo = request.args.get('timeTo', default = 'none', type = str)
