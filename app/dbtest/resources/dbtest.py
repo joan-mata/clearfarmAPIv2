@@ -14,8 +14,12 @@ def home():
         None
     '''
     
+    reference_list = list(db_cows["reference"].find())
+    
+    
     return_value = {
-        "db": str(db_cows)
+        "db": str(db_cows),
+        "reference_list": reference_list[0]
     }
     
     
