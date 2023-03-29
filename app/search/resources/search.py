@@ -82,9 +82,9 @@ def search():
         
     '''
     animal = request.args.get('animal', default = 'none', type = str)
-    farmId = request.args.get('farmId', default = 0, type = int)
+    farmId = request.args.get('farmId', default = '0', type = str)
     animalId = request.args.get('animalId', default = 'none', type = str)
-    animalNum = request.args.get('animalNum', default = 0, type = int)
+    animalNum = request.args.get('animalNum', default = '0', type = str)
     quantity = request.args.get('quantity', default = 'Last', type = str)
     timeFrom = request.args.get('timeFrom', default = 'none', type = str)
     timeTo = request.args.get('timeTo', default = 'none', type = str)
@@ -115,8 +115,8 @@ def search():
                         "text": "Is required the 'animal' value.",
                         }
     #Check values to farmId 
-    elif farmId <= 0:
-        if farmId == 0:
+    elif int(farmId) <= 0:
+        if farmId == "0":
             value_return = {"type": "error",
                             "name": "error_required_farmId",
                             "text": "Is required the 'farmId' value or the value is not a integer.",
