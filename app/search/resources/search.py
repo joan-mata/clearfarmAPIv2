@@ -152,8 +152,6 @@ def search():
             value_return = searchRangeFarm.searchRangeFarm(farmId, timeFrom, timeTo)
         
         
-    print("DATA " + str(type(value_return)))
-
     #TODO: Comprove timeFrom format
     #TODO: Comprove timeTo format
     #TODO: Comprove timeFrom < today
