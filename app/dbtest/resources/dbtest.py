@@ -48,7 +48,7 @@ def dbtest():
     }
     
     dict = redirect('/errors')
-    return_value = dict
+    return_value = dict["error_format_timeFrom"]
     
     return return_value
             
