@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, redirect
 
 from app import db_cows
 
@@ -27,25 +27,27 @@ def dbtest():
     
     
     return_value = {
-    "0": {
-        "db": str(db_cows),
-        "farmId": farmID,
-        "animalId": id,
-        "animalNum": cowNum,
-        "reference_list": str(reference_list[0]),
-        "referenceIds": str(referenceIds),
-        "newfind": str(newfind[0])
-    },
-    "1": {
-        "db": str(db_cows),
-        "farmId": farmID,
-        "animalId": id,
-        "animalNum": cowNum,
-        "reference_list": str(reference_list[0]),
-        "referenceIds": str(referenceIds),
-        "newfind": str(newfind[0])
-    }}
+        "0": {
+            "db": str(db_cows),
+            "farmId": farmID,
+            "animalId": id,
+            "animalNum": cowNum,
+            "reference_list": str(reference_list[0]),
+            "referenceIds": str(referenceIds),
+            "newfind": str(newfind[0])
+        },
+        "1": {
+            "db": str(db_cows),
+            "farmId": farmID,
+            "animalId": id,
+            "animalNum": cowNum,
+            "reference_list": str(reference_list[0]),
+            "referenceIds": str(referenceIds),
+            "newfind": str(newfind[0])
+        }
+    }
     
+    return_value = redirect('/errors')
     
     
     return return_value
