@@ -1,3 +1,4 @@
+from flask import jsonify
 from app import db_cows
 
 def searchLastFarm(farmID):
