@@ -47,8 +47,6 @@ def dbtest():
         }
     }
     
-    dict = make_response(('/errors')
-    return_value = str(dict)
     
     return return_value
             
