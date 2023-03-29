@@ -11,7 +11,9 @@ def searchLastFarm(farmID):
     #recovery collections - id matrix (list of dictionarys)
     matrix = list(db_cows["listCollections"].find({"collection": {"$exists": "true"}}))
 
-    data = []
+#    data = []
+    data = {}
+    index = 0
     for item in matrix: #each item is a dictionary
         #item values
         itemCollection = item["collection"]
@@ -19,6 +21,8 @@ def searchLastFarm(farmID):
         temporalData = list(db_cows[itemCollection].find({"farmID": farmID}).sort("$natural", -1))
         
         if temporalData:
-            data.append(temporalData[0])
+#            data.append(temporalData[0])
+            data.update(index: temporalData[0])
+            index += 1
 
     return data
