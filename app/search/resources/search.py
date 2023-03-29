@@ -69,7 +69,8 @@ def search():
     Return: {
         error_required_animal: "Is required the 'animal' value.",
         error_required_farmId: "Is required the 'farmId' value.",
-        error_farmId: "Value is smaller than 1."
+        error_value_farmId: "Value is smaller than 1."
+        
         error_animalId: "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
         error_format_timeFrom: "Format of 'timeFrom' is not correct.",
         error_format_timeTo: "Format of 'timeTo' is not correct.",
@@ -101,53 +102,7 @@ def search():
     
     #Check values we need
     #Values are required: animal, farmId, *animalId
-    error_dict = {
-        "error_required_animal": {
-            "type": "error",
-            "error_name": "error_required_animal",
-            "text": "Is required the 'animal' value.",
-        },
-        "error_required_farmId": {
-            "type": "error",
-            "error_name": "error_required_farmId",
-            "text": "Is required the 'farmId' value or the value is not a integer.",
-        },
-        "error_farmId": {
-            "type": "error",
-            "error_name": "error_farmId",
-            "text": "Value is smaller than 1.",
-        },
-        "error_animalId": {
-            "type": "error",
-            "error_name": "error_animalId",
-            "text": "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
-        },
-        "error_format_timeFrom": {
-            "type": "error",
-            "error_name": "error_format_timeFrom",
-            "text": "Format of 'timeFrom' is not correct. Correct format is 'YYYY-MM-DD'.",
-        },
-        "error_format_timeTo": {
-            "type": "error",
-            "error_name": "error_format_timeTo",
-            "text": "Format of 'timeTo' is not correct. Correct format is 'YYYY-MM-DD'.",
-        },
-        "error_today_timeFrom": {
-            "type": "error",
-            "error_name": "error_today_timeFrom",
-            "text": "'timeFrom' value must be smaller than today's date."
-        },
-        "error_today_timeTo": {
-            "type": "error",
-            "error_name": "error_today_timeTo",
-            "text": "'timeTo' value must be smaller than today's date."
-        },
-        "error_small_timeTo": {
-            "type": "error",
-            "error_name": "error_small_timeTo",
-            "text": "'timeTo' value must be greater than 'timeFrom' value."
-        }
-    }
+    
 
     #Check if you have inserted timeFrom
     if timeFrom != 'none':
@@ -155,18 +110,30 @@ def search():
     
     #Check values to animal
     if animal == "none":
-        value_return  = error_dict["error_required_animal"]
+        value_return = { "type": "error",
+                        "name": "error_required_animal",
+                        "text": "Is required the 'animal' value.",
+                        }
     #Check values to farmId 
     elif farmId <= 0:
         if farmId == 0:
-            value_return  = error_dict["error_required_farmId"]
+            value_return = {"type": "error",
+                            "name": "error_required_farmId",
+                            "text": "Is required the 'farmId' value or the value is not a integer.",
+                            }
         else:
-            value_return  = error_dict["error_farmId"]
+            value_return =  { "type": "error",
+                            "name": "error_value_farmId",
+                            "text": "Value is smaller than 1.",
+                            }
     #Check if you have inserted animalNum
     elif animalNum != 0:
         #Check values to animalId
         if animalId == "none":
-            value_return  = error_dict["error_animalId"]
+            value_return  = { "type": "error",
+                            "name": "error_required_animalId",
+                            "text": "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
+                            }
         #Search concrete animal
         else:
             if quantity == "Last":

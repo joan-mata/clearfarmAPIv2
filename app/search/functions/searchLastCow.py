@@ -14,8 +14,13 @@ def searchLastCow(farmID, cowNum, id):
     if referenceIds:
         referenceIds = referenceIds[0]
     else:
-        return 'prints/printErrorReference.html', "No information about the cow in this farm"
-        
+        error = {
+            "type": "error",
+            "name": "error_value_animalId",
+            "text": "It is possible that you have not correctly selected the 'AnimalId' value.",
+        }
+        return error
+    
     #recovery collections - id matrix (list of dictionarys)
     matrix = list(db_cows["listCollections"].find({"collection": {"$exists": "true"}}))
 
