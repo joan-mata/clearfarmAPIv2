@@ -33,7 +33,7 @@ def home():
         "animalNum": cowNum,
         "reference_list": str(reference_list[0]),
         "referenceIds": str(referenceIds),
-        "newfind": str(newfind)
+        "newfind": str(newfind[0])
     }
     
     
