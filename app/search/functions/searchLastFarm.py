@@ -22,8 +22,9 @@ def searchLastFarm(farmID):
         
         if temporalData:
 #            data.append(temporalData[0])
-            data.update({str(index): temporalData[0]})
-            print("DATA " + str(type(temporalData[0])))
+            value = {str(index): temporalData[0]}
+            data.update(value)
+            print("DATA " + str(type(value)))
             index += 1
 
     return data
