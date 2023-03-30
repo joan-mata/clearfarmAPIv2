@@ -93,7 +93,7 @@ msg_dict = {
     "error_no_post": {
         "type": "error",
         "name": "error_no_post",
-        "text": "You do not use a PSOT method",
+        "text": "You do not use a POST method",
     },
     "no_data_animalNum": {
         "type": "information",
