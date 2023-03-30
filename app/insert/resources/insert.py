@@ -5,7 +5,7 @@ from app import msg_dict
 from .. import insert_bp
 
 
-@insert_bp.route('/insert', methods['POST'])
+@insert_bp.route('/insert', methods=['POST'])
 def insert():
     '''
     Inserts.
