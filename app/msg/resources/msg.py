@@ -1,12 +1,12 @@
 from flask import Flask
 
-from app import error_dict
+from app import msg_dict
 
-from .. import errors_bp
+from .. import msg_bp
 
 
-@errors_bp.route('/errors')
-def errors():
+@msg_bp.route('/msg')
+def msg():
     '''
     List of errors
     
@@ -16,6 +16,6 @@ def errors():
     
     
     
-    return error_dict
+    return msg_dict
 
             

@@ -32,8 +32,8 @@ def create_app():
     from .dbtest import dbtest_bp
     app.register_blueprint(dbtest_bp)
     
-    from .errors import errors_bp
-    app.register_blueprint(errors_bp)
+    from .msg import msg_bp
+    app.register_blueprint(msg_bp)
     
     return app
     
