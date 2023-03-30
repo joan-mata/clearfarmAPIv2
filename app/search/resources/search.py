@@ -151,13 +151,15 @@ def search():
         else:
             value_return = searchRangeFarm.searchRangeFarm(farmId, timeFrom, timeTo)
         
-        
+    
+    print("DATA " + str(type(value_return)))
+
     #TODO: Comprove timeFrom format
     #TODO: Comprove timeTo format
     #TODO: Comprove timeFrom < today
     #TODO: Comprove timeTo < today
     #TODO: Comprove timeFrom < timeTo
     
-    return str(value_return)
+    return value_return
 
             
