@@ -39,7 +39,7 @@ def create_app():
     
 
 
-error_dict = {
+msg_dict = {
     "error_required_animal": {
         "type": "error",
         "name": "error_required_animal",
