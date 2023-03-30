@@ -1,4 +1,4 @@
-from flask import jsonify
+import json
 from app import db_cows
 
 def searchLastFarm(farmID):
@@ -23,7 +23,7 @@ def searchLastFarm(farmID):
         
         if temporalData:
 #            data.append(temporalData[0])
-            data.update({str(index): temporalData[0]})
+            data.update({str(index): json.loads(temporalData[0])})
             index += 1
 
     return data
