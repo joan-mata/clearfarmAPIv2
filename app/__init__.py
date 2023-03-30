@@ -25,6 +25,9 @@ def create_app():
     
     from .search import search_bp
     app.register_blueprint(search_bp)
+    
+    from .insert import insert_bp
+    app.register_blueprint(insert_bp)
 
     from .dbtest import dbtest_bp
     app.register_blueprint(dbtest_bp)

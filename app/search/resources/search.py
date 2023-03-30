@@ -151,12 +151,13 @@ def search():
         else:
             value_return = searchRangeFarm.searchRangeFarm(farmId, timeFrom, timeTo)
         
+    #TODO: return dict or JSON in searches
     #TODO: Comprove timeFrom format
     #TODO: Comprove timeTo format
     #TODO: Comprove timeFrom < today
     #TODO: Comprove timeTo < today
     #TODO: Comprove timeFrom < timeTo
     
-    return str(value_return["0"])
+    return value_return
 
             
