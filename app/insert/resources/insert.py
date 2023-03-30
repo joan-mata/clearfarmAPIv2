@@ -1,5 +1,7 @@
 from flask import Flask
 
+from app import msg_dict
+
 from .. import insert_bp
 
 
@@ -12,6 +14,13 @@ def insert():
         None
     '''
     
-    return "Welcome to INSERT."
+    value_return = msg_dict["error_no_post"]
+    
+    if request.method == 'POST':
+    
+        value_return = msg_dict["ok_insert"]
+    
+    
+    return value_return
 
             

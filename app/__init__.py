@@ -90,11 +90,22 @@ error_dict = {
         "name": "error_small_timeTo",
         "text": "'timeTo' value must be greater than 'timeFrom' value."
     },
-    "no_data_animalNum": {
-        "type": "no_data",
-        "name": "no_data_animalNum",
-        "text": "No information about this animal in this farm"
+    "error_no_post": {
+        "type": "error",
+        "name": "error_no_post",
+        "text": "You do not use a PSOT method",
     },
+    "no_data_animalNum": {
+        "type": "information",
+        "name": "no_data_animalNum",
+        "text": "No information about this animal in this farm."
+    },
+    "ok_insert": {
+        "type": "information",
+        "name": "ok_insert",
+        "text": "Your POST method have been sent correctly."
+    }
+
 }
     
         

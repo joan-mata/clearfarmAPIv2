@@ -1,6 +1,6 @@
 from flask import Flask, request
 
-from app import error_dict
+from app import msg_dict
 
 from .. import search_bp
 from ..functions import searchAllCow
@@ -112,18 +112,18 @@ def search():
     
     #Check values to animal
     if animal == "none":
-        value_return = error_dict["error_required_animal"]
+        value_return = msg_dict["error_required_animal"]
     #Check values to farmId 
     elif int(farmId) <= 0:
         if farmId == "0":
-            value_return = error_dict["error_required_farmId"]
+            value_return = msg_dict["error_required_farmId"]
         else:
-            value_return = error_dict["error_value_farmId"]
+            value_return = msg_dict["error_value_farmId"]
     #Check if you have inserted animalNum
     elif animalNum != "0":
         #Check values to animalId
         if animalId == "none":
-            value_return  = error_dict["error_required_animalId"]
+            value_return  = msg_dict["error_required_animalId"]
         #Search concrete animal
         else:
             if quantity == "Last":
