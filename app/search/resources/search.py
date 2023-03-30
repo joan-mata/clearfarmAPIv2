@@ -1,5 +1,7 @@
 from flask import Flask, request
 
+from app import error_dict
+
 from .. import search_bp
 from ..functions import searchAllCow
 from ..functions import searchAllFarm
@@ -110,30 +112,18 @@ def search():
     
     #Check values to animal
     if animal == "none":
-        value_return = { "type": "error",
-                        "name": "error_required_animal",
-                        "text": "Is required the 'animal' value.",
-                        }
+        value_return = error_dict["error_required_animal"]
     #Check values to farmId 
     elif int(farmId) <= 0:
         if farmId == "0":
-            value_return = {"type": "error",
-                            "name": "error_required_farmId",
-                            "text": "Is required the 'farmId' value or the value is not a integer.",
-                            }
+            value_return = error_dict["error_required_farmId"]
         else:
-            value_return =  { "type": "error",
-                            "name": "error_value_farmId",
-                            "text": "Value is smaller than 1.",
-                            }
+            value_return = error_dict["error_value_farmId"]
     #Check if you have inserted animalNum
     elif animalNum != "0":
         #Check values to animalId
         if animalId == "none":
-            value_return  = { "type": "error",
-                            "name": "error_required_animalId",
-                            "text": "Is required the 'animalId' value because you have inserted the 'animalNum' value.",
-                            }
+            value_return  = error_dict["error_required_animalId"]
         #Search concrete animal
         else:
             if quantity == "Last":
