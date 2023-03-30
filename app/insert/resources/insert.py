@@ -6,12 +6,12 @@ from .. import insert_bp
 @insert_bp.route('/insert')
 def insert():
     '''
-    Presentation to REST-API.
+    Inserts.
     
     Args:
         None
     '''
     
-    return "Welcome to Clearfarm's REST-API."
+    return "Welcome to INSERT."
 
             
