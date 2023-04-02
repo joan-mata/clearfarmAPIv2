@@ -7,11 +7,14 @@ import json
 import os
 
 from .. import inserts_bp
-from app import db_cows, UPLOAD_FOLDER
+from ..functions import recoveryForm
+from ..functions import treatDictReader
+from ..functions import treatListReader
 from ..functions import computeHash
 from ..functions import recoveryPreviousHash
+from app import db_cows, UPLOAD_FOLDER
 
-@inserts_bp.route('/farmPOST', methods=('GET', 'POST'))
+@inserts_bp.route('/farmPOST', methods=['GET', 'POST'])
 def farmPOST():
     '''
     Insert farm's data in DB
@@ -21,45 +24,21 @@ def farmPOST():
     '''
     
     if request.method=='POST':
-        enterprise = request.form["collections"]
-        db = db_cows
+        enterprise, db = recoveryForm.recoveryForm()
+
         f = request.files['csvfile']
         filename = secure_filename(f.filename)
         f.save(os.path.join(UPLOAD_FOLDER, enterprise + '.csv'))
-        
-        csvFilePath = r'data/' + enterprise + '.csv'
-        
-        try: # If exist this enterprise
-            count = db['listCollections'].count_documents({"collection": enterprise})
-        except: # If not exist this enterprise
-            count = 0
-            
-        if count == 0:
-            if enterprise != "reference" and enterprise != "matComp":
-                key = request.form["keys"]
-                db['listCollections'].insert({"collection": enterprise, "key": key})
-                
-        data = []
-        with open(csvFilePath, encoding='utf-8') as csvf:
-            csvReader = csv.DictReader(csvf)
-            #add date from today
-            date = datetime.today().strftime('%Y-%m-%d')
-            dict = {'date_insert_in_db': date}
-            #hashPrevious = recoveryPreviousHash.recoveryPreviousHash(db[enterprise])
-            hashPrevious = {'hash_previous': '0'} #DELETE
 
-            for rows in csvReader:
-                key = {}
-                key.update(dict)
-                key.update(hashPrevious)
-                key.update(rows)
-                hash = computeHash.computeHash(key)
-                hashPrevious = hash
-                key.update(hash)
-                data.append(key)
+        csvFilePath = r'data/' + enterprise + '.csv'
+
+        with open(csvFilePath, encoding='utf-8') as csvf:
+#            data = treatDictReader.treatDictReader(csvf, db, enterprise)
+            data = treatListReader.treatListReader(csvf, db, enterprise)
 
         db[enterprise].insert_many(data)
         return redirect(url_for('home.home'))
+
 
     return render_template('inserts/farmPOST.html')
 

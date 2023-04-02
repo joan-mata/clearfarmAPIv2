@@ -7,11 +7,19 @@ import json
 import os
 
 from .. import inserts_bp
-from app import db, UPLOAD_FOLDER
+from app import UPLOAD_FOLDER
 
 def recoveryPreviousHash(dataBase):
-    data = list(dataBase.find({"hash": {"$exists": "true"}}).sort("$natural", -1))
-    dict = {'hash_previous': str(data[0])}
+    data = list(dataBase.find({}, {"hash": 1}).sort("$natural", -1))
+    
+#    if data:
+    try:
+        dict_aux = data[0]
+        dict = {'hash_previous': dict_aux['hash']}
+    except:
+#    else:
+        dict = {'hash_previous': '0'}
+
     return dict
 
 
