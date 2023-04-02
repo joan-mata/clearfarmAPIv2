@@ -28,7 +28,7 @@ def farmPOST():
 
         f = request.files['csvfile']
         filename = secure_filename(f.filename)
-        f.save(os.path.join(UPLOAD_FOLDER, enterprise + '.csv'))
+        f.save(os.path.join("/home/azureuser/clearfarmAPIv2/data/", enterprise + '.csv'))
 
         csvFilePath = r'data/' + enterprise + '.csv'
 
