@@ -7,7 +7,7 @@ import json
 import os
 
 from .. import inserts_bp
-from app import db, UPLOAD_FOLDER
+from app import db_cows, UPLOAD_FOLDER
 from ..functions import computeHash
 from ..functions import recoveryPreviousHash
 
@@ -22,7 +22,7 @@ def farmPOST():
     
     if request.method=='POST':
         enterprise = request.form["collections"]
-
+        db = db_cows
         f = request.files['csvfile']
         filename = secure_filename(f.filename)
         f.save(os.path.join(UPLOAD_FOLDER, enterprise + '.csv'))
