@@ -7,7 +7,6 @@ import json
 import os
 
 from .. import inserts_bp
-from app import UPLOAD_FOLDER
 
 def recoveryPreviousHash(dataBase):
     data = list(dataBase.find({}, {"hash": 1}).sort("$natural", -1))

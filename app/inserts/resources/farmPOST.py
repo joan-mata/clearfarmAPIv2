@@ -12,7 +12,7 @@ from ..functions import treatDictReader
 from ..functions import treatListReader
 from ..functions import computeHash
 from ..functions import recoveryPreviousHash
-from app import db_cows, UPLOAD_FOLDER
+from app import db_cows
 
 @inserts_bp.route('/farmPOST', methods=['GET', 'POST'])
 def farmPOST():

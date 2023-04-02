@@ -10,7 +10,6 @@ import hashlib
 from . import computeHash
 from . import recoveryPreviousHash
 from .. import inserts_bp
-from app import UPLOAD_FOLDER
 
 def treatListReader(csvf, db, enterprise):
     data = []
