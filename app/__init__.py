@@ -20,20 +20,23 @@ def create_app():
     #db.init_app(app)
 
     # Registro de los Blueprints
+    from .dbtest import dbtest_bp
+    app.register_blueprint(dbtest_bp)
+    
     from .home import home_bp
     app.register_blueprint(home_bp)
+    
+    from .inserts import inserts_bp
+    app.register_blueprint(inserts_bp)
+    
+    from .msg import msg_bp
+    app.register_blueprint(msg_bp)
     
     from .search import search_bp
     app.register_blueprint(search_bp)
     
-    from .insert import insert_bp
-    app.register_blueprint(insert_bp)
-
-    from .dbtest import dbtest_bp
-    app.register_blueprint(dbtest_bp)
-    
-    from .msg import msg_bp
-    app.register_blueprint(msg_bp)
+    from .welfare import welfare_bp
+    app.register_blueprint(welfare_bp)
     
     return app
     
