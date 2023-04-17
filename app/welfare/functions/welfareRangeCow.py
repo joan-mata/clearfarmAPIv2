@@ -31,12 +31,12 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
     
     date_from = [0, 0, 0] #[mm, dd, yy]
     date_from[0] = int(timeFrom[5:7])
-    date_from[1] = int(timeFrom[8:])
+    date_from[1] = int(timeFrom[9:])
     date_from[2] = int(timeFrom[2:4])
     
     date_to = [0, 0, 0] #[mm, dd, yy]
     date_to[0] = int(timeTo[5:7])
-    date_to[1] = int(timeTo[8:])
+    date_to[1] = int(timeTo[9:])
     date_to[2] = int(timeTo[2:4])
     
     print("TimeFrom: " + str(date_from))
