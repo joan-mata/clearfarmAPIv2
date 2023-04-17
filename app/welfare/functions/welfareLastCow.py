@@ -1,4 +1,3 @@
-import time
 from app import db_cows
 
 def welfareLastCow(walfare, animalNum):
@@ -45,13 +44,6 @@ def welfareLastCow(walfare, animalNum):
                 if item_date[1] > date[1]:
                     date[1] = item_date[1]
                     score = item[walfare_value]
-                    
-        print("ITEM: " + str(item_date[2]))
-        print("DATE: " + str(date[2]))
-        #time.sleep(0.2)
-
-                    
-    print("DATE: " + str(date))
     
     
 #    #find id's in reference collection
@@ -84,4 +76,4 @@ def welfareLastCow(walfare, animalNum):
 #        if temporalData:
 #            data.append(temporalData[0])
 
-    return data
+    return score
