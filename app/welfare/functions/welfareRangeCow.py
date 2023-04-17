@@ -1,68 +1,70 @@
-from . import compareDate
 from app import db_cows
 
-def welfareRangeCow(farmID, animalNum, timeFrom, timeTo):
+def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
     '''
+    Search RANGE information about ONE cow
     
-    Args:
-        None
+    Args: {
+        walfare: {  def: ,
+                    type: str,
+                    values: ['health', 'feeding', 'housing', 'global']
+        
+                },
+        animalNum: { def: "number for a one animal (or group of animals)",
+                    type: int,
+                    values: "any integer if it is greater than 0",
+                },
+        timeFrom: { def: "lower limit for the range of dates where we want to search information",
+                    type: string,
+                    format date: 'YYYY-MM-DD',
+                    values: date,
+                },
+        timeTo: {   def: "upper limit for the range of dates where we want to search information",
+                    type: string,
+                    format date: 'YYYY-MM-DD',
+                },
+    }
     '''
+    walfare_value = walfare + "_score"
     
-    #treat dates
-        #Format time: YYYY-MM-DD (String)
-        #Format date: [YYYY, MM, DD] (List of Int)
-        #Format timeDb: MM/DD/YYYY (String)
-    dateFrom = []
-    dateFrom.append(int(timeFrom[:4]))
-    dateFrom.append(int(timeFrom[5:7]))
-    dateFrom.append(int(timeFrom[8:]))
+    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1}))
     
-    if timeTo != "":
-        dateTo = []
-        dateTo.append(int(timeTo[:4]))
-        dateTo.append(int(timeTo[5:7]))
-        dateTo.append(int(timeTo[8:]))
-    else:
-        dateTo = ""
+    date_from = [0, 0, 0] #[mm, dd, yy]
+    date_from[0] = int(timeFrom[5:7])
+    date_from[1] = int(timeFrom[8:])
+    date_from[2] = int(timeFrom[2:4])
     
-    #find id's in reference collection
-    referenceIds = list(db_cows["reference"].find({"$and":[{"farmID": farmID},{id: cowNum}]}).sort("$natural", -1))
+    date_to = [0, 0, 0] #[mm, dd, yy]
+    date_to[0] = int(timeTo[5:7])
+    date_to[1] = int(timeTo[8:])
+    date_to[2] = int(timeTo[2:4])
     
-    if referenceIds:
-        referenceIds = referenceIds[0]
-    else:
-        error = {
-            "type": "error",
-            "name": "error_value_animalId",
-            "text": "It is possible that you have not correctly selected the 'AnimalId' value.",
-        }
-        return error
-     
-    #recovery collections - id matrix (list of dictionarys)
-    matrix = list(db_cows["listCollections"].find({"collection": {"$exists": "true"}}))
-
-    data = []
-    for item in matrix: #each item is a dictionary
-        #item values
-        itemCollection = item["collection"]
-        itemId = item["key"]
-
-        #referenceIds values
-        referenceFarmId = referenceIds["farmID"]
-        referenceCowNum = referenceIds[itemId]
+    print("TimeFrom: " + str(date_from))
+    print("TimeTo: " + str(date_to))
+    
+    item_date = [0, 0, 0] #[mm, dd, yy]
+    for item in data:
+        item_date[0] = int(item["date"][:2])
+        item_date[1] = int(item["date"][3:5])
+        item_date[2] = int(item["date"][6:])
         
-        temporalData = list(db_cows[itemCollection].find({"$and":[{"farmID": referenceFarmId},{itemId: referenceCowNum}]}).sort("$natural", -1))
-        
-        #TODO: Comprobar si devuelve un diccionario o se ha de hacer una lista por narices
-        data = db_cows["walfare"].find({"health_score": {"$exists": "true"}})
-        
-        for temporalItem in temporalData:
-            timeDb = temporalItem['date_insert_in_db']
-            #TODO: hay que cambiarle el formato de MM/DD/YYYY a DD-MM-YYYY o cambiar el compareDate
-            flag = compareDate.compareDate(dateFrom, dateTo, temporalItem['date_insert_in_db'])
-            
-            if temporalData and flag:
-                data.append(temporalItem)
+        #analyze year
+        if item_date[2] > date[2]:
+            date[0] = item_date[0]
+            date[1] = item_date[1]
+            date[2] = item_date[2]
+            score = item[walfare_value]
+        elif item_date[2] == date[2]:
+            #analyze month
+            if item_date[0] > date[0]:
+                date[0] = item_date[0]
+                date[1] = item_date[1]
+                score = item[walfare_value]
+            elif item_date[0] == date[0]:
+                #analyze day
+                if item_date[1] > date[1]:
+                    date[1] = item_date[1]
+                    score = item[walfare_value]
+    
 
-    return data
-
+    return score
