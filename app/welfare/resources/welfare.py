@@ -4,7 +4,10 @@ from app import db_cows
 from app import msg_dict
 
 from .. import welfare_bp
-
+from ..functions import welfareLastCow
+from ..functions import welfareLastFarm
+from ..functions import welfareRangeCow
+from ..functions import welfareRangeFarm
 
 @welfare_bp.route('/welfare/health')
 def wf_health():
@@ -24,12 +27,7 @@ def wf_health():
                     default: 0,
                     values: "any integer if it is greater than 0"
                 },
-        animalNum: { def: "number for a one animal (or group of animals)",
-                    type: int,
-                    required: no,
-                    default: 0,
-                    values: "any integer if it is greater than 0",
-                },
+        s
         timeFrom: { def: "lower limit for the range of dates where we want to search information",
                     type: string,
                     required: no,
@@ -75,21 +73,18 @@ def wf_health():
     elif animalNum != "0":
         #Search concrete animal
         if quantity == "Last":
-            value_return = searchLastCow.searchLastCow(farmId, animalNum, animalId)
+            value_return = welfareLastCow.welfareLastCow(farmId, animalNum, animalId)
         else:
-            value_return = searchRangeCow.searchRangeCow(farmId, animalNum, animalId, timeFrom, timeTo)
+            value_return = welfareRangeCow.welfareRangeCow(farmId, animalNum, animalId, timeFrom, timeTo)
     #Search all animals in farm
     else:
         if quantity == "Last":
-            value_return = searchLastFarm.searchLastFarm(farmId)
+            value_return = welfareLastFarm.welfareLastFarm(farmId)
         else:
-            value_return = searchRangeFarm.searchRangeFarm(farmId, timeFrom, timeTo)
+            value_return = welfareRangeFarm.welfareRangeFarm(farmId, timeFrom, timeTo)
             
     #TODO: Comprobar si devuelve un diccionario o se ha de hacer una lista por narices
-    data = db_cows["walfare"].find({"health_score": {"$exists": "true"}})
-    
-    print(data)
-    
+        
     return value_return
 
 @welfare_bp.route('/welfare/feeding')
