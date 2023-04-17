@@ -43,7 +43,7 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
     print("TimeTo: " + str(date_to))
     
     item_date = [0, 0, 0] #[mm, dd, yy]
-    score = 0
+    score = '0'
 #    for item in data:
 #        item_date[0] = int(item["date"][:2])
 #        item_date[1] = int(item["date"][3:5])
