@@ -88,7 +88,7 @@ def wf_health():
     #TODO: Comprobar si devuelve un diccionario o se ha de hacer una lista por narices
     data = db_cows["walfare"].find({"health_score": {"$exists": "true"}})
     
-    
+    print(data)
     
     return value_return
 
