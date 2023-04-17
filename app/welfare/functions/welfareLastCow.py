@@ -18,7 +18,7 @@ def welfareLastCow(walfare, animalNum):
     '''
     walfare_value = walfare + "_score"
     
-    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1}))
+    data = db_cows["welfare"].find_one({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1})
     
     
     print("Type: " + str(type(data)))
@@ -57,4 +57,4 @@ def welfareLastCow(walfare, animalNum):
 #        if temporalData:
 #            data.append(temporalData[0])
 
-    return str(data)
+    return data
