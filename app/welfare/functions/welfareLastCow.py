@@ -43,8 +43,9 @@ def welfareLastCow(walfare, animalNum):
                     date = item_date
                     score = item[walfare_value]
                     
-        print(str(item_date[2]))
-        time.sleep(0.5)
+        print("ITEM: " + str(item_date[2]))
+        print("DATE: " + str(date[2]))
+        time.sleep(0.1)
 
                     
     print("DATE: " + str(date))
