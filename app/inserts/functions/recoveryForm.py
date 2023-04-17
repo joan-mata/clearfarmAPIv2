@@ -12,20 +12,20 @@ from app import db_cows, db_pigs
 
 def recoveryForm():
     enterprise = request.form["collections"]
-    animals = request.form["animals"]
+    #animals = request.form["animals"]
     key = request.form["keys"]
                     
-    if animals == "cows":
-        db = db_cows
-        processEnterpriseResults.processEnterpriseResults(db, enterprise, key)
+    #if animals == "cows":
+    db = db_cows
+    processEnterpriseResults.processEnterpriseResults(db, enterprise, key)
 
-    elif animals == "pigs":
-        db = db_pigs
-        processEnterpriseResults.processEnterpriseResults(db, enterprise, key)
-
-    else:
-        print("Error, No deberias estar aquí")
-        #No se trata esto
-        db = "error"
+#    elif animals == "pigs":
+#        db = db_pigs
+#        processEnterpriseResults.processEnterpriseResults(db, enterprise, key)
+#
+#    else:
+#        print("Error, No deberias estar aquí")
+#        #No se trata esto
+#        db = "error"
         
     return enterprise, db
