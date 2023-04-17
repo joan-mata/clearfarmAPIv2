@@ -20,7 +20,9 @@ def welfareLastCow(walfare, animalNum):
     
     data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1}))
     
-    
+    date = [0, 0, 0] #[mm, dd, yyyy]
+    for item in data:
+        print(item["date"])
     
     
     
