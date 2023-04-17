@@ -18,12 +18,9 @@ def welfareLastCow(walfare, animalNum):
     '''
     walfare_value = walfare + "_score"
     
-    data = db_cows["welfare"].find_one({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1})
+    data = db_cows["welfare"].find_many({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1})
     
     
-    print("Type: " + str(type(data)))
-    print("DATA: ")
-    print(data)
     
     
     
