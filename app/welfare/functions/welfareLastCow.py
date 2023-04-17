@@ -27,11 +27,19 @@ def welfareLastCow(walfare, animalNum):
         item_date[1] = int(item["date"][3:5])
         item_date[2] = int(item["date"][6:])
         
-        print(item["date"])
-        print(item_date[0])
-        print(item_date[1])
-        print(item_date[2])
-        
+        #analyze year
+        if item_date[2] > date[2]:
+            date = item_date
+        elif item_date[2] == date[2]:
+            #analyze month
+            if item_date[0] > date[0]:
+                date = item_date
+            elif item_date[0] == date[0]:
+                #analyze day
+                if item_date[1] > date[1]:
+                    date = item_date
+                    
+    print("DATE: " + str(date))
     
     
 #    #find id's in reference collection
