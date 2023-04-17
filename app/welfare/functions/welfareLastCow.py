@@ -20,12 +20,12 @@ def welfareLastCow(walfare, animalNum):
     
     data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1}))
     
-    date = [0, 0, 0] #[mm, dd, yyyy]
-    item_date = [0, 0, 0] #[mm, dd, yyyy]
+    date = [0, 0, 0] #[mm, dd, yy]
+    item_date = [0, 0, 0] #[mm, dd, yy]
     for item in data:
         item_date[0] = int(item["date"][:2])
-        item_date[1] = int(item["date"][3:4])
-        item_date[2] = int(item["date"][5:])
+        item_date[1] = int(item["date"][3:5])
+        item_date[2] = int(item["date"][6:])
         
         print(item["date"])
         print(item_date[0])
