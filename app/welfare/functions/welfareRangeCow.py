@@ -31,40 +31,40 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
     
     date_from = [0, 0, 0] #[mm, dd, yy]
     date_from[0] = int(timeFrom[5:7])
-    date_from[1] = int(timeFrom[9:])
+    date_from[1] = int(timeFrom[8:])
     date_from[2] = int(timeFrom[2:4])
     
     date_to = [0, 0, 0] #[mm, dd, yy]
     date_to[0] = int(timeTo[5:7])
-    date_to[1] = int(timeTo[9:])
+    date_to[1] = int(timeTo[8:])
     date_to[2] = int(timeTo[2:4])
     
     print("TimeFrom: " + str(date_from))
     print("TimeTo: " + str(date_to))
     
     item_date = [0, 0, 0] #[mm, dd, yy]
-    for item in data:
-        item_date[0] = int(item["date"][:2])
-        item_date[1] = int(item["date"][3:5])
-        item_date[2] = int(item["date"][6:])
-        
-        #analyze year
-        if item_date[2] > date[2]:
-            date[0] = item_date[0]
-            date[1] = item_date[1]
-            date[2] = item_date[2]
-            score = item[walfare_value]
-        elif item_date[2] == date[2]:
-            #analyze month
-            if item_date[0] > date[0]:
-                date[0] = item_date[0]
-                date[1] = item_date[1]
-                score = item[walfare_value]
-            elif item_date[0] == date[0]:
-                #analyze day
-                if item_date[1] > date[1]:
-                    date[1] = item_date[1]
-                    score = item[walfare_value]
+#    for item in data:
+#        item_date[0] = int(item["date"][:2])
+#        item_date[1] = int(item["date"][3:5])
+#        item_date[2] = int(item["date"][6:])
+#
+#        #analyze year
+#        if item_date[2] > date[2]:
+#            date[0] = item_date[0]
+#            date[1] = item_date[1]
+#            date[2] = item_date[2]
+#            score = item[walfare_value]
+#        elif item_date[2] == date[2]:
+#            #analyze month
+#            if item_date[0] > date[0]:
+#                date[0] = item_date[0]
+#                date[1] = item_date[1]
+#                score = item[walfare_value]
+#            elif item_date[0] == date[0]:
+#                #analyze day
+#                if item_date[1] > date[1]:
+#                    date[1] = item_date[1]
+#                    score = item[walfare_value]
     
 
     return score
