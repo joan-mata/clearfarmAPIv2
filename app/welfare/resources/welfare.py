@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 
 from app import db_cows
 from app import msg_dict
@@ -89,7 +89,7 @@ def wf_health():
     data = db_cows["walfare"].find({"health_score": {"$exists": "true"}})
     
     
-    return "Welcome to Clearfarm's REST-API."
+    return "Welcome to Clearfarm's REST-API -> Welfare Health."
 
 @welfare_bp.route('/welfare/feeding')
 def wf_feeding():
