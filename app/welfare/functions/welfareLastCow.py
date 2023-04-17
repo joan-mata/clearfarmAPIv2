@@ -1,3 +1,4 @@
+import time
 from app import db_cows
 
 def welfareLastCow(walfare, animalNum):
@@ -30,16 +31,22 @@ def welfareLastCow(walfare, animalNum):
         #analyze year
         if item_date[2] > date[2]:
             date = item_date
+            score = item[walfare_value]
         elif item_date[2] == date[2]:
             #analyze month
             if item_date[0] > date[0]:
                 date = item_date
+                score = item[walfare_value]
             elif item_date[0] == date[0]:
                 #analyze day
                 if item_date[1] > date[1]:
                     date = item_date
+                    score = item[walfare_value]
+        time.sleep(0.5)
+
                     
     print("DATE: " + str(date))
+    print("score: " + str(score))
     
     
 #    #find id's in reference collection
