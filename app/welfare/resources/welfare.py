@@ -89,7 +89,8 @@ def wf_health():
     data = db_cows["walfare"].find({"health_score": {"$exists": "true"}})
     
     
-    return "Welcome to Clearfarm's REST-API -> Welfare Health."
+    
+    return value_return
 
 @welfare_bp.route('/welfare/feeding')
 def wf_feeding():
