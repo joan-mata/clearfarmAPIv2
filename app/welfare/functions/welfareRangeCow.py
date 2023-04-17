@@ -53,45 +53,45 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
         #analyze year from
         if item_date[2] > date_from[2]:
             #analyze year to
-            if item_date[2] < date_from[2]:
+            if item_date[2] < date_to[2]:
                 return_value.append(item)
-            elif item_date[2] == date[2]:
+            elif item_date[2] == date_to[2]:
                 #analyze month to
-                if item_date[0] < date_from[0]:
+                if item_date[0] < date_to[0]:
                     return_value.append(item)
-                elif item_date[0] == date_from[0]:
+                elif item_date[0] == date_to[0]:
                     #analyze day to
-                    if item_date[1] <= date_from[1]:
+                    if item_date[1] <= date_to[1]:
                         return_value.append(item)
                 
-        elif item_date[2] == date[2]:
+        elif item_date[2] == date_from[2]:
             #analyze month from
             if item_date[0] > date_from[0]:
                 #analyze year to
-                if item_date[2] < date_from[2]:
+                if item_date[2] < date_to[2]:
                     return_value.append(item)
-                elif item_date[2] == date[2]:
+                elif item_date[2] == date_to[2]:
                     #analyze month to
-                    if item_date[0] < date_from[0]:
+                    if item_date[0] < date_to[0]:
                         return_value.append(item)
-                    elif item_date[0] == date_from[0]:
+                    elif item_date[0] == date_to[0]:
                         #analyze day to
-                        if item_date[1] <= date_from[1]:
+                        if item_date[1] <= date_to[1]:
                             return_value.append(item)
                 
             elif item_date[0] == date_from[0]:
                 #analyze day from
                 if item_date[1] >= date_from[1]:
                     #analyze year to
-                    if item_date[2] < date_from[2]:
+                    if item_date[2] < date_to[2]:
                         return_value.append(item)
-                    elif item_date[2] == date[2]:
+                    elif item_date[2] == date_to[2]:
                         #analyze month to
-                        if item_date[0] < date_from[0]:
+                        if item_date[0] < date_to[0]:
                             return_value.append(item)
-                        elif item_date[0] == date_from[0]:
+                        elif item_date[0] == date_to[0]:
                             #analyze day to
-                            if item_date[1] <= date_from[1]:
+                            if item_date[1] <= date_to[1]:
                                 return_value.append(item)
 
     return return_value
