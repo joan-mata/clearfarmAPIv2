@@ -91,20 +91,8 @@ def search():
     timeFrom = request.args.get('timeFrom', default = 'none', type = str)
     timeTo = request.args.get('timeTo', default = 'none', type = str)
     
-    #TODO: delete
-    value = {
-            "animal": animal,
-            "farmId": farmId,
-            "animalId": animalId,
-            "animalNum": animalNum,
-            "quantity": quantity,
-            "timeFrom": timeFrom,
-            "timeTo": timeTo,
-    }
-    
     #Check values we need
     #Values are required: animal, farmId, *animalId
-    
 
     #Check if you have inserted timeFrom
     if timeFrom != 'none':

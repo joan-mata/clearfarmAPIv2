@@ -32,12 +32,13 @@ def farmPOST():
 
         csvFilePath = r'data/' + enterprise + '.csv'
 
+        data = []
         with open(csvFilePath, encoding='utf-8') as csvf:
             data = treatDictReader.treatDictReader(csvf, db, enterprise)
 #            data = treatListReader.treatListReader(csvf, db, enterprise)
 
         db[enterprise].insert_many(data)
-        return redirect(url_for('home.home'))
+        return "ok"
 
 
     return render_template('inserts/farmPOST.html')
