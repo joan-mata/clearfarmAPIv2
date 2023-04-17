@@ -27,7 +27,12 @@ def wf_health():
                     default: 0,
                     values: "any integer if it is greater than 0"
                 },
-        s
+        animalNum: { def: "number for a one animal (or group of animals)",
+                    type: int,
+                    required: no,
+                    default: 0,
+                    values: "any integer if it is greater than 0",
+                },
         timeFrom: { def: "lower limit for the range of dates where we want to search information",
                     type: string,
                     required: no,
@@ -73,7 +78,7 @@ def wf_health():
     elif animalNum != "0":
         #Search concrete animal
         if quantity == "Last":
-            value_return = welfareLastCow.welfareLastCow(farmId, animalNum, animalId)
+            value_return = welfareLastCow.welfareLastCow("health", animalNum)
         else:
             value_return = welfareRangeCow.welfareRangeCow(farmId, animalNum, animalId, timeFrom, timeTo)
     #Search all animals in farm
