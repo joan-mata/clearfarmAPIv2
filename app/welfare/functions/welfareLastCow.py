@@ -22,8 +22,15 @@ def welfareLastCow(walfare, animalNum):
     
     date = [0, 0, 0] #[mm, dd, yyyy]
     for item in data:
+        item_date[0] = int(item["date"][:2])
+        item_date[1] = int(item["date"][3:4])
+        item_date[2] = int(item["date"][5:])
+        
         print(item["date"])
-    
+        print(item_date[0])
+        print(item_date[1])
+        print(item_date[2])
+        
     
     
 #    #find id's in reference collection
