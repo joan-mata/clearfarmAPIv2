@@ -25,47 +25,73 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
                 },
     }
     '''
+    
     walfare_value = walfare + "_score"
     
     data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1}))
     
+    #Convert timeFrom
     date_from = [0, 0, 0] #[mm, dd, yy]
     date_from[0] = int(timeFrom[5:7])
     date_from[1] = int(timeFrom[8:])
     date_from[2] = int(timeFrom[2:4])
-    
+
+    #Convert timeTo
     date_to = [0, 0, 0] #[mm, dd, yy]
     date_to[0] = int(timeTo[5:7])
     date_to[1] = int(timeTo[8:])
     date_to[2] = int(timeTo[2:4])
     
-    print("TimeFrom: " + str(date_from))
-    print("TimeTo: " + str(date_to))
-    
     item_date = [0, 0, 0] #[mm, dd, yy]
-    score = '0'
-#    for item in data:
-#        item_date[0] = int(item["date"][:2])
-#        item_date[1] = int(item["date"][3:5])
-#        item_date[2] = int(item["date"][6:])
-#
-#        #analyze year
-#        if item_date[2] > date[2]:
-#            date[0] = item_date[0]
-#            date[1] = item_date[1]
-#            date[2] = item_date[2]
-#            score = item[walfare_value]
-#        elif item_date[2] == date[2]:
-#            #analyze month
-#            if item_date[0] > date[0]:
-#                date[0] = item_date[0]
-#                date[1] = item_date[1]
-#                score = item[walfare_value]
-#            elif item_date[0] == date[0]:
-#                #analyze day
-#                if item_date[1] > date[1]:
-#                    date[1] = item_date[1]
-#                    score = item[walfare_value]
+    return_value = []
     
+    for item in data:
+        item_date[0] = int(item["date"][:2])
+        item_date[1] = int(item["date"][3:5])
+        item_date[2] = int(item["date"][6:])
 
-    return score
+        #analyze year from
+        if item_date[2] > date_from[2]:
+            #analyze year to
+            if item_date[2] < date_from[2]:
+                return_value.append(item)
+            elif item_date[2] == date[2]:
+                #analyze month to
+                if item_date[0] < date_from[0]:
+                    return_value.append(item)
+                elif item_date[0] == date_from[0]:
+                    #analyze day to
+                    if item_date[1] <= date_from[1]:
+                        return_value.append(item)
+                
+        elif item_date[2] == date[2]:
+            #analyze month from
+            if item_date[0] > date_from[0]:
+                #analyze year to
+                if item_date[2] < date_from[2]:
+                    return_value.append(item)
+                elif item_date[2] == date[2]:
+                    #analyze month to
+                    if item_date[0] < date_from[0]:
+                        return_value.append(item)
+                    elif item_date[0] == date_from[0]:
+                        #analyze day to
+                        if item_date[1] <= date_from[1]:
+                            return_value.append(item)
+                
+            elif item_date[0] == date_from[0]:
+                #analyze day from
+                if item_date[1] >= date_from[1]:
+                    #analyze year to
+                    if item_date[2] < date_from[2]:
+                        return_value.append(item)
+                    elif item_date[2] == date[2]:
+                        #analyze month to
+                        if item_date[0] < date_from[0]:
+                            return_value.append(item)
+                        elif item_date[0] == date_from[0]:
+                            #analyze day to
+                            if item_date[1] <= date_from[1]:
+                                return_value.append(item)
+
+    return return_value
