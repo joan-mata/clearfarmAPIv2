@@ -1,29 +1,27 @@
 import json
 from app import db_cows
 
-def searchLastFarm(farmID):
+def searchLastFarm(walfare, farmID):
     '''
     Search LAST information about ONE farm
     
-    Args:
-        None
+    Args: {
+        walfare: {  def: ,
+                    type: str,
+                    values: ['health', 'feeding', 'housing', 'global']
+        
+                },
+        farmId: {   def: number of farm where we want search this animal,
+                    type: int,
+                    values: "any integer if it is greater than 0"
+                },
+    }
     '''
         
-    #recovery collections - id matrix (list of dictionarys)
-    matrix = list(db_cows["listCollections"].find({"collection": {"$exists": "true"}}))
+    list_cowId = list(db_cows["reference"].find({"farmID": farmID},{"_id": 0, "farmID": 1,  "cowID": 1}))
 
-#    data = []
-    data = {}
+    data = []
     index = 0
-    for item in matrix: #each item is a dictionary
-        #item values
-        itemCollection = item["collection"]
-
-        temporalData = list(db_cows[itemCollection].find({"farmID": farmID}).sort("$natural", -1))
+#    for item in list_cowId: #each item is a dictionary
         
-        if temporalData:
-#            data.append(temporalData[0])
-            data.update({str(index): temporalData[0]})
-            index += 1
-
-    return str(data)
+    return list_cowId
