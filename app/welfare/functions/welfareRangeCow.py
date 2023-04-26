@@ -25,9 +25,9 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
     }
     '''
     
-    WALFARE_VALUE = walfare + "_score"
+    WELFARE_VALUE = walfare + "_score"
     
-    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, WALFARE_VALUE: 1,  "cowID": 1, "date": 1}))
+    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, WELFARE_VALUE: 1,  "cowID": 1, "date": 1}))
     
     #Convert timeFrom
     date_from = [0, 0, 0] #[mm, dd, yy]

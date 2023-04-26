@@ -18,7 +18,7 @@ def welfareLastFarm(walfare, farmID):
                 },
     }
     '''
-    WALFARE_VALUE = walfare + "_score"
+    WELFARE_VALUE = walfare + "_score"
     
     list_cowId = list(db_cows["reference"].find({"farmID": farmID},{"_id": 0, "farmID": 1,  "cowID": 1}))
 
@@ -27,7 +27,7 @@ def welfareLastFarm(walfare, farmID):
     for item in list_cowId: #each item is a dictionary
         score = welfareLastCow.welfareLastCow(walfare, item["cowID"])
         
-        dict = {"cowID": item["cowID"], WALFARE_VALUE: score}
+        dict = {"cowID": item["cowID"], WELFARE_VALUE: score}
         data.append(dict)
         
     return data

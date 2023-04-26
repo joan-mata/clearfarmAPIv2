@@ -25,18 +25,14 @@ def welfareRangeFarm(walfare, farmID, timeFrom, timeTo):
                     format date: 'YYYY-MM-DD',
                 },
     }
-    '''
-    WALFARE_VALUE = walfare + "_score"
-    
+    '''    
     list_cowId = list(db_cows["reference"].find({"farmID": farmID},{"_id": 0, "farmID": 1,  "cowID": 1}))
 
     data = []
     
     for item in list_cowId: #each item is a dictionary
         aux_data = welfareRangeCow.welfareRangeCow(walfare, item["cowID"], timeFrom, timeTo)
-        
-        #dict = {"cowID": item["cowID"], WALFARE_VALUE: score}
-        #data.append(dict)
+
         data += aux_data
         
     return data
