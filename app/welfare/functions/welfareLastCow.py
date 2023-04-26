@@ -16,9 +16,9 @@ def welfareLastCow(walfare, animalNum):
                 },
     }
     '''
-    walfare_value = walfare + "_score"
+    WALFARE_VALUE = walfare + "_score"
     
-    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1}))
+    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, WALFARE_VALUE: 1,  "cowID": 1, "date": 1}))
     
     date = [0, 0, 0] #[mm, dd, yy]
     item_date = [0, 0, 0] #[mm, dd, yy]
@@ -32,17 +32,17 @@ def welfareLastCow(walfare, animalNum):
             date[0] = item_date[0]
             date[1] = item_date[1]
             date[2] = item_date[2]
-            score = item[walfare_value]
+            score = item[WALFARE_VALUE]
         elif item_date[2] == date[2]:
             #analyze month
             if item_date[0] > date[0]:
                 date[0] = item_date[0]
                 date[1] = item_date[1]
-                score = item[walfare_value]
+                score = item[WALFARE_VALUE]
             elif item_date[0] == date[0]:
                 #analyze day
                 if item_date[1] > date[1]:
                     date[1] = item_date[1]
-                    score = item[walfare_value]
+                    score = item[WALFARE_VALUE]
     
     return score
