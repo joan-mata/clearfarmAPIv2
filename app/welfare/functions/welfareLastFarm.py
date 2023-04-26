@@ -1,3 +1,5 @@
+from . import welfareLastCow
+
 from app import db_cows
 
 def welfareLastFarm(walfare, farmID):
@@ -20,7 +22,8 @@ def welfareLastFarm(walfare, farmID):
     list_cowId = list(db_cows["reference"].find({"farmID": farmID},{"_id": 0, "farmID": 1,  "cowID": 1}))
 
     data = []
-    index = 0
-#    for item in list_cowId: #each item is a dictionary
+    for item in list_cowId: #each item is a dictionary
+        aux_data = welfareLastCow.welfareLastCow(walfare, item["cowID"])
+        data += aux_data
         
-    return list_cowId
+    return data
