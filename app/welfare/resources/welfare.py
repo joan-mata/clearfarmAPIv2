@@ -58,7 +58,7 @@ def wf_health():
 
 @welfare_bp.route('/welfare/feeding')
 def wf_feeding():
-        '''
+    '''
     Search and return data range for FEEDING score of an animal.
     
     Args: {
@@ -167,7 +167,7 @@ def wf_housing():
     
 @welfare_bp.route('/welfare/global')
 def wf_global():
-        '''
+    '''
     Search and return data range for GLOBAL score of an animal.
     
     Args: {
