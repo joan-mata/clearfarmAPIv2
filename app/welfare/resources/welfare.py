@@ -222,7 +222,7 @@ def wf_global():
     return value_return
 
 @welfare_bp.route('/welfare/all')
-def wf_global():
+def wf_all():
     '''
     Search and return data range for GLOBAL score of an animal.
     
