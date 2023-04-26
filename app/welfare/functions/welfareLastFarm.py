@@ -23,7 +23,9 @@ def welfareLastFarm(walfare, farmID):
 
     data = []
     for item in list_cowId: #each item is a dictionary
+        print("cowID: " + str(item["cowID"]))
         aux_data = welfareLastCow.welfareLastCow(walfare, item["cowID"])
+        print("aux_data: " + str(aux_data))
         data += aux_data
         
     return data
