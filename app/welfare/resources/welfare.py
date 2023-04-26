@@ -1,6 +1,8 @@
 from flask import Flask, request
 
 from .. import welfare_bp
+from ..functions import funct_welfare
+
 
 @welfare_bp.route('/welfare/health')
 def wf_health():
