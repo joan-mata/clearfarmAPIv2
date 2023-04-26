@@ -84,8 +84,7 @@ def wf_health():
     #Search all animals in farm
     else:
         if quantity == "Last":
-            #TODO: hacer
-            value_return = welfareLastFarm.welfareLastFarm(farmId)
+            value_return = welfareLastFarm.welfareLastFarm("health", animalNum)
         else:
             #TODO: hacer
             value_return = welfareRangeFarm.welfareRangeFarm(farmId, timeFrom, timeTo)

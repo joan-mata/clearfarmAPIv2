@@ -1,4 +1,3 @@
-import json
 from app import db_cows
 
 def searchLastFarm(walfare, farmID):
