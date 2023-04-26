@@ -1,6 +1,6 @@
 from app import db_cows
 
-def searchLastFarm(walfare, farmID):
+def welfareLastFarm(walfare, farmID):
     '''
     Search LAST information about ONE farm
     
