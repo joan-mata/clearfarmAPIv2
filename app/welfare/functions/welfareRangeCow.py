@@ -8,7 +8,6 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
         walfare: {  def: ,
                     type: str,
                     values: ['health', 'feeding', 'housing', 'global']
-        
                 },
         animalNum: { def: "number for a one animal (or group of animals)",
                     type: int,
@@ -26,9 +25,9 @@ def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
     }
     '''
     
-    walfare_value = walfare + "_score"
+    WALFARE_VALUE = walfare + "_score"
     
-    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, walfare_value: 1,  "cowID": 1, "date": 1}))
+    data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, WALFARE_VALUE: 1,  "cowID": 1, "date": 1}))
     
     #Convert timeFrom
     date_from = [0, 0, 0] #[mm, dd, yy]

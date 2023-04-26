@@ -1,45 +1,42 @@
-from . import compareDate
+from . import welfareRangeCow
+
 from app import db_cows
 
-def searchRangeFarm(farmID, timeFrom, timeTo):
+def welfareRangeFarm(walfare, farmID, timeFrom, timeTo):
     '''
-    Search RANGE information about ONE farm
+    Search ALL information about ONE farm
     
-    Args:
-        None
+    Args: {
+        walfare: {  def: ,
+                    type: str,
+                    values: ['health', 'feeding', 'housing', 'global']
+                },
+        farmId: {   def: number of farm where we want search this animal,
+                    type: int,
+                    values: "any integer if it is greater than 0"
+                },
+        timeFrom: { def: "lower limit for the range of dates where we want to search information",
+                    type: string,
+                    format date: 'YYYY-MM-DD',
+                    values: date,
+                },
+        timeTo: {   def: "upper limit for the range of dates where we want to search information",
+                    type: string,
+                    format date: 'YYYY-MM-DD',
+                },
+    }
     '''
-    #treat dates
-        #Format time: YYYY-MM-DD (String)
-        #Format date: [YYYY, MM, DD] (List of Int)
-    dateFrom = []
-    dateFrom = []
-    dateFrom.append(int(timeFrom[:4]))
-    dateFrom.append(int(timeFrom[5:7]))
-    dateFrom.append(int(timeFrom[8:]))
+    WALFARE_VALUE = walfare + "_score"
     
-    if timeTo != "":
-        dateTo = []
-        dateTo.append(int(timeTo[:4]))
-        dateTo.append(int(timeTo[5:7]))
-        dateTo.append(int(timeTo[8:]))
-    else:
-        dateTo = ""
-    
-    #recovery collections - id matrix (list of dictionarys)
-    matrix = list(db_cows["listCollections"].find({"collection": {"$exists": "true"}}))
+    list_cowId = list(db_cows["reference"].find({"farmID": farmID},{"_id": 0, "farmID": 1,  "cowID": 1}))
 
     data = []
-    for item in matrix: #each item is a dictionary
-        #item values
-        itemCollection = item["collection"]
+    
+    for item in list_cowId: #each item is a dictionary
+        aux_data = welfareRangeCow.welfareRangeCow(walfare, item["cowID"], timeFrom, timeTo)
         
-        temporalData = list(db_cows[itemCollection].find({"farmID": farmID}).sort("$natural", -1))
+        #dict = {"cowID": item["cowID"], WALFARE_VALUE: score}
+        #data.append(dict)
+        data += aux_data
         
-        for temporalItem in temporalData:
-            flag = compareDate.compareDate(dateFrom, dateTo, temporalItem['date_insert_in_db'])
-            
-            if temporalData and flag:
-                data.append(temporalItem)
-
     return data
-

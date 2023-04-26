@@ -86,8 +86,7 @@ def wf_health():
         if quantity == "Last":
             value_return = welfareLastFarm.welfareLastFarm("health", farmId)
         else:
-            #TODO: hacer
-            value_return = welfareRangeFarm.welfareRangeFarm(farmId, timeFrom, timeTo)
+            value_return = welfareRangeFarm.welfareRangeFarm("health", farmId, timeFrom, timeTo)
         
     return value_return
 
