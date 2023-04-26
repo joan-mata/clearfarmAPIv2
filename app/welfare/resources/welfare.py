@@ -113,7 +113,7 @@ def wf_feeding():
 
 @welfare_bp.route('/welfare/housing')
 def wf_housing():
-        '''
+    '''
     Search and return data range for HOUSING score of an animal.
     
     Args: {
