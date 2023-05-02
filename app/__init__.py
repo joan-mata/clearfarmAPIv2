@@ -23,14 +23,19 @@ def create_app():
     from .dbtest import dbtest_bp
     app.register_blueprint(dbtest_bp)
     
+    from .disease import disease_bp
+    app.register_blueprint(disease_bp)
+    
     from .home import home_bp
     app.register_blueprint(home_bp)
     
-    from .inserts import inserts_bp
-    app.register_blueprint(inserts_bp)
-    
-    from .msg import msg_bp
-    app.register_blueprint(msg_bp)
+#    # Ya hecha, borrar, tiene fallos
+#    from .inserts import inserts_bp
+#    app.register_blueprint(inserts_bp)
+
+#    # Por implementar
+#    from .insert import insert_bp
+#    app.register_blueprint(insert_bp)
     
     from .search import search_bp
     app.register_blueprint(search_bp)

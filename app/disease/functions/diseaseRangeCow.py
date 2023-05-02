@@ -1,11 +1,11 @@
 from app import db_cows
 
-def welfareRangeCow(welfare, animalNum, timeFrom, timeTo):
+def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
     '''
     Search RANGE information about ONE cow
     
     Args: {
-        welfare: {  def: ,
+        walfare: {  def: ,
                     type: str,
                     values: ['health', 'feeding', 'housing', 'global']
                 },
@@ -25,7 +25,7 @@ def welfareRangeCow(welfare, animalNum, timeFrom, timeTo):
     }
     '''
     
-    WELFARE_VALUE = welfare + "_score"
+    WELFARE_VALUE = walfare + "_score"
     
     data = list(db_cows["welfare"].find({"cowID": animalNum},{"_id": 0, WELFARE_VALUE: 1,  "cowID": 1, "date": 1}))
     

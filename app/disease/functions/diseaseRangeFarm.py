@@ -2,12 +2,12 @@ from . import welfareRangeCow
 
 from app import db_cows
 
-def welfareRangeFarm(welfare, farmID, timeFrom, timeTo):
+def welfareRangeFarm(walfare, farmID, timeFrom, timeTo):
     '''
     Search ALL information about ONE farm
     
     Args: {
-        welfare: {  def: ,
+        walfare: {  def: ,
                     type: str,
                     values: ['health', 'feeding', 'housing', 'global']
                 },
@@ -31,7 +31,7 @@ def welfareRangeFarm(welfare, farmID, timeFrom, timeTo):
     data = []
     
     for item in list_cowId: #each item is a dictionary
-        aux_data = welfareRangeCow.welfareRangeCow(welfare, item["cowID"], timeFrom, timeTo)
+        aux_data = welfareRangeCow.welfareRangeCow(walfare, item["cowID"], timeFrom, timeTo)
 
         data += aux_data
         
