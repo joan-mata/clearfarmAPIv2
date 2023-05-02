@@ -4,10 +4,10 @@ from app import db_cows
 from app import msg_dict
 
 from .. import disease_bp
-from ..functions import welfareLastCow
-from ..functions import welfareLastFarm
-from ..functions import welfareRangeCow
-from ..functions import welfareRangeFarm
+from ..functions import diseaseLastCow
+from ..functions import diseaseLastFarm
+from ..functions import diseaseRangeCow
+from ..functions import diseaseRangeFarm
 
 def funct_disease(disease, animal, farmId, animalNum, timeFrom, timeTo):
     quantity = "Last"
