@@ -22,7 +22,7 @@ def disease_mastitis():
                     values: "any integer if it is greater than 0"
                 },
         animalNum: { def: "number for a one animal (or group of animals)",
-                    type: int,
+                    type: str,
                     required: no,
                     default: 0,
                     values: "any integer if it is greater than 0",
@@ -48,7 +48,7 @@ def disease_mastitis():
     
     animal = request.args.get('animal', default = 'none', type = str)
     farmId = str(request.args.get('farmId', default = 0, type = int))
-    animalNum = str(request.args.get('animalNum', default = 0, type = int))
+    animalNum = request.args.get('animalNum', default = 'none', type = str)
     timeFrom = request.args.get('timeFrom', default = 'none', type = str)
     timeTo = request.args.get('timeTo', default = 'none', type = str)
     

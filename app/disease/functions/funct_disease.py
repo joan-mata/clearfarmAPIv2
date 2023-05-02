@@ -25,7 +25,7 @@ def funct_disease(disease, animal, farmId, animalNum, timeFrom, timeTo):
         else:
             value_return = msg_dict["error_value_farmId"]
     #Check if you have inserted animalNum
-    elif animalNum != "0":
+    elif animalNum != "none":
         #Search concrete animal
         if quantity == "Last":
             value_return = diseaseLastCow.diseaseLastCow(disease, animalNum)
