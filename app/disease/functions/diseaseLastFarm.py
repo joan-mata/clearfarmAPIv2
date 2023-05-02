@@ -1,8 +1,8 @@
-from . import welfareLastCow
+from . import diseaseLastCow
 
 from app import db_cows
 
-def welfareLastFarm(walfare, farmID):
+def diseaseLastFarm(walfare, farmID):
     '''
     Search LAST information about ONE farm
     
@@ -25,7 +25,7 @@ def welfareLastFarm(walfare, farmID):
     data = []
     
     for item in list_cowId: #each item is a dictionary
-        score = welfareLastCow.welfareLastCow(walfare, item["cowID"])
+        score = diseaseLastCow.diseaseLastCow(walfare, item["cowID"])
         
         dict = {"cowID": item["cowID"], WELFARE_VALUE: score}
         data.append(dict)

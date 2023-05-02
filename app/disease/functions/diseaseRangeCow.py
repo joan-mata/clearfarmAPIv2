@@ -1,6 +1,6 @@
 from app import db_cows
 
-def welfareRangeCow(walfare, animalNum, timeFrom, timeTo):
+def diseaseeRangeCow(walfare, animalNum, timeFrom, timeTo):
     '''
     Search RANGE information about ONE cow
     

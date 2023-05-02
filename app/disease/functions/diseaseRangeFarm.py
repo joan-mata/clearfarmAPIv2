@@ -1,8 +1,8 @@
-from . import welfareRangeCow
+from . import diseaseRangeCow
 
 from app import db_cows
 
-def welfareRangeFarm(walfare, farmID, timeFrom, timeTo):
+def diseaseRangeFarm(walfare, farmID, timeFrom, timeTo):
     '''
     Search ALL information about ONE farm
     
@@ -31,7 +31,7 @@ def welfareRangeFarm(walfare, farmID, timeFrom, timeTo):
     data = []
     
     for item in list_cowId: #each item is a dictionary
-        aux_data = welfareRangeCow.welfareRangeCow(walfare, item["cowID"], timeFrom, timeTo)
+        aux_data = diseaseRangeCow.diseaseRangeCow(walfare, item["cowID"], timeFrom, timeTo)
 
         data += aux_data
         
