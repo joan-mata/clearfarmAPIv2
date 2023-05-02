@@ -30,15 +30,15 @@ def funct_disease(disease, animal, farmId, animalNum, timeFrom, timeTo):
         if quantity == "Last":
             value_return = diseaseLastCow.diseaseLastCow(disease, animalNum)
         else:
-            value_return = "diseaseRangeCow"
-            #value_return = diseaseRangeCow.diseaseRangeCow(disease, animalNum, timeFrom, timeTo)
+#            value_return = "diseaseRangeCow"
+            value_return = diseaseRangeCow.diseaseRangeCow(disease, animalNum, timeFrom, timeTo)
     #Search all animals in farm
     else:
         if quantity == "Last":
-            value_return = "diseaseLastFarm"
-            #value_return = diseaseLastFarm.diseaseLastFarm(disease, farmId)
+#            value_return = "diseaseLastFarm"
+            value_return = diseaseLastFarm.diseaseLastFarm(disease, farmId)
         else:
-            value_return = "diseaseRangeFarm"
-            #value_return = diseaseRangeFarm.diseaseRangeFarm(disease, farmId, timeFrom, timeTo)
+#            value_return = "diseaseRangeFarm"
+            value_return = diseaseRangeFarm.diseaseRangeFarm(disease, farmId, timeFrom, timeTo)
         
     return value_return

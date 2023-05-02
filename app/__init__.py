@@ -30,8 +30,8 @@ def create_app():
     app.register_blueprint(home_bp)
     
 #    # Ya hecha, borrar, tiene fallos
-#    from .inserts import inserts_bp
-#    app.register_blueprint(inserts_bp)
+    from .inserts import inserts_bp
+    app.register_blueprint(inserts_bp)
 
 #    # Por implementar
 #    from .insert import insert_bp

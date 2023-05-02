@@ -18,7 +18,7 @@ def diseaseLastCow(disease, animalNum):
     '''
     data = list(db_cows["vet"].find({"official_cowID": animalNum},{"_id": 0, disease: 1,  "official_cowID": 1, "date": 1}))
     
-    return_value = '0'
+    return_value = 'none'
     date = [0, 0, 0] #[mm, dd, yy]
     item_date = [0, 0, 0] #[mm, dd, yy]
     for item in data:
