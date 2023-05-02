@@ -55,31 +55,27 @@ def disease_mastitis():
     value_return = funct_disease.funct_disease("mastitis", animal, farmId, animalNum, timeFrom, timeTo)
     
     return value_return
-    
-    
-    return return_value
-
             
 @disease_bp.route('/disease/acitosis')
 def disease_acitosis():
     '''
     '''
-    return return_value
+    return value_return
 
 @disease_bp.route('/disease/pneumonia')
 def disease_pneumonia():
     '''
     '''
-    return return_value
+    return value_return
     
 @disease_bp.route('/disease/abomasus_surgery')
 def disease_abomasus_surgery():
     '''
     '''
-    return return_value
+    return value_return
 
 @disease_bp.route('/disease/all')
 def disease_all():
     '''
     '''
-    return return_value
+    return value_return
