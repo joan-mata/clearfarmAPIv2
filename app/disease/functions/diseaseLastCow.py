@@ -1,6 +1,6 @@
 from app import db_cows
 
-def welfareLastCow(disease, animalNum):
+def diseaseLastCow(disease, animalNum):
     '''
     Search LAST information about ONE cow
     
