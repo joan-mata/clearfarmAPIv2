@@ -44,4 +44,4 @@ def diseaseLastCow(disease, animalNum):
                     date[1] = item_date[1]
                     return_value = item[disease]
     
-    return data
+    return return_value
