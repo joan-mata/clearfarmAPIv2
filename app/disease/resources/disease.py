@@ -27,21 +27,40 @@ def disease_mastitis():
                     default: 0,
                     values: "any integer if it is greater than 0",
                 },
-        timeFrom: { def: "lower limit for the range of dates where we want to search information",
+    }
+    '''
+    
+    animal = request.args.get('animal', default = 'none', type = str)
+    farmId = str(request.args.get('farmId', default = 0, type = int))
+    animalNum = request.args.get('animalNum', default = 'none', type = str)
+    
+    value_return = funct_disease.funct_disease("mastitis", animal, farmId, animalNum)
+    
+    return value_return
+            
+@disease_bp.route('/disease/acidosis')
+def disease_acitosis():
+    '''
+        Search and return data range for ACIDOSIS score of animal
+    
+    Args: {
+        animal: {   def: "is the type of animal we want search.",
                     type: string,
-                    required: no,
-                    format date: 'YYYY-MM-DD',
+                    required: yes,
                     default: 'none',
-                    values: date,
-                    comment: "If you insert any value in 'timeFrom', the 'quantity' value are not important, because change automaticaly to 'Range'."
+                    values: ['cow', 'pig']
                 },
-        timeTo: {   def: "upper limit for the range of dates where we want to search information",
-                    type: string,
+        farmId: {   def: number of farm where we want search this animal,
+                    type: int,
+                    required: yes,
+                    default: 0,
+                    values: "any integer if it is greater than 0"
+                },
+        animalNum: { def: "number for a one animal (or group of animals)",
+                    type: str,
                     required: no,
-                    format date: 'YYYY-MM-DD',
-                    default: 'none',
-                    values: "any date greater than 'timeFrom' and smaller than today",
-                    comment: "If you do not insert any value in 'timeFrom', the 'timeTo' does not work."
+                    default: 0,
+                    values: "any integer if it is greater than 0",
                 },
     }
     '''
@@ -49,29 +68,79 @@ def disease_mastitis():
     animal = request.args.get('animal', default = 'none', type = str)
     farmId = str(request.args.get('farmId', default = 0, type = int))
     animalNum = request.args.get('animalNum', default = 'none', type = str)
-    timeFrom = request.args.get('timeFrom', default = 'none', type = str)
-    timeTo = request.args.get('timeTo', default = 'none', type = str)
     
-    value_return = funct_disease.funct_disease("mastitis", animal, farmId, animalNum, timeFrom, timeTo)
+    value_return = funct_disease.funct_disease("acidosis", animal, farmId, animalNum)
     
-    return value_return
-            
-@disease_bp.route('/disease/acitosis')
-def disease_acitosis():
-    '''
-    '''
     return value_return
 
 @disease_bp.route('/disease/pneumonia')
 def disease_pneumonia():
     '''
+        Search and return data range for PNEUMONIA score of animal
+    
+    Args: {
+        animal: {   def: "is the type of animal we want search.",
+                    type: string,
+                    required: yes,
+                    default: 'none',
+                    values: ['cow', 'pig']
+                },
+        farmId: {   def: number of farm where we want search this animal,
+                    type: int,
+                    required: yes,
+                    default: 0,
+                    values: "any integer if it is greater than 0"
+                },
+        animalNum: { def: "number for a one animal (or group of animals)",
+                    type: str,
+                    required: no,
+                    default: 0,
+                    values: "any integer if it is greater than 0",
+                },
+    }
     '''
+    
+    animal = request.args.get('animal', default = 'none', type = str)
+    farmId = str(request.args.get('farmId', default = 0, type = int))
+    animalNum = request.args.get('animalNum', default = 'none', type = str)
+    
+    value_return = funct_disease.funct_disease("pneumonia", animal, farmId, animalNum)
+    
     return value_return
     
 @disease_bp.route('/disease/abomasus_surgery')
 def disease_abomasus_surgery():
     '''
+        Search and return data range for ABOMASUS SURGERY score of animal
+    
+    Args: {
+        animal: {   def: "is the type of animal we want search.",
+                    type: string,
+                    required: yes,
+                    default: 'none',
+                    values: ['cow', 'pig']
+                },
+        farmId: {   def: number of farm where we want search this animal,
+                    type: int,
+                    required: yes,
+                    default: 0,
+                    values: "any integer if it is greater than 0"
+                },
+        animalNum: { def: "number for a one animal (or group of animals)",
+                    type: str,
+                    required: no,
+                    default: 0,
+                    values: "any integer if it is greater than 0",
+                },
+    }
     '''
+    
+    animal = request.args.get('animal', default = 'none', type = str)
+    farmId = str(request.args.get('farmId', default = 0, type = int))
+    animalNum = request.args.get('animalNum', default = 'none', type = str)
+    
+    value_return = funct_disease.funct_disease("abomasus_surgery", animal, farmId, animalNum)
+    
     return value_return
 
 @disease_bp.route('/disease/all')
