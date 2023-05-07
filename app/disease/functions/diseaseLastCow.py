@@ -16,7 +16,14 @@ def diseaseLastCow(disease, animalNum):
                 },
     }
     '''
-    data = 'none'
+    return_data = 'none'
     data = list(db_cows["vet"].find({"official_cowID": animalNum},{"_id": 0, disease: 1,  "official_cowID": 1, "date": 1}))
     
-    return data
+    if data:
+        return_data = []
+        for item in data:
+            if item[disease] != "":
+                return_data.append(item[disease])
+    
+    
+    return return_data
