@@ -224,7 +224,7 @@ def wf_global():
 @welfare_bp.route('/welfare/all')
 def wf_all():
     '''
-    Search and return data range for GLOBAL score of an animal.
+    Search and return data range for ALL score of an animal.
     
     Args: {
         animal: {   def: "is the type of animal we want search.",
