@@ -18,16 +18,7 @@ def diseaseLastFarm(walfare, farmID):
                 },
     }
     '''
-    WELFARE_VALUE = walfare + "_score"
-    
-    list_cowId = list(db_cows["reference"].find({"farmID": farmID},{"_id": 0, "farmID": 1,  "cowID": 1}))
-
-    data = []
-    
-    for item in list_cowId: #each item is a dictionary
-        score = diseaseLastCow.diseaseLastCow(walfare, item["cowID"])
-        
-        dict = {"cowID": item["cowID"], WELFARE_VALUE: score}
-        data.append(dict)
+    data = 'none'
+    data = list(db_cows["vet"].find({"farmID": farmID},{"_id": 0, disease: 1,  "official_cowID": 1, "date": 1}))
         
     return data
