@@ -5,7 +5,7 @@ from app import msg_dict
 
 from .. import disease_bp
 from ..functions import diseaseLastCow
-#from ..functions import diseaseLastFarm
+from ..functions import diseaseLastFarm
 #from ..functions import diseaseRangeCow
 #from ..functions import diseaseRangeFarm
 

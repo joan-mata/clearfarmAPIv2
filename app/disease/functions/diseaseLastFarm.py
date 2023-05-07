@@ -2,7 +2,7 @@ from . import diseaseLastCow
 
 from app import db_cows
 
-def diseaseLastFarm(walfare, farmID):
+def diseaseLastFarm(disease, farmID):
     '''
     Search LAST information about ONE farm
     
