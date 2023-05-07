@@ -23,7 +23,7 @@ def diseaseLastCow(disease, animalNum):
         return_data = []
         for item in data:
             if item[disease] != "":
-                return_data.append(item[disease])
+                return_data.append(item)
     
     
     return return_data
