@@ -40,7 +40,7 @@ def insert():
     
     #value_return = msg_dict["error_no_post"]
     
-    value_return = render_template('insert/farmPOST.html')
+    value_return = render_template('insert/insertCows.html')
             
     if request.method == 'POST':
         
