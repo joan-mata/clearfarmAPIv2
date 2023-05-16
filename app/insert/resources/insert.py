@@ -40,8 +40,6 @@ def insert():
     
     #value_return = msg_dict["error_no_post"]
     
-    value_return = render_template('insert/insertCows.html')
-            
     if request.method == 'POST':
         
         value_return = msg_dict["ok_insert"]
