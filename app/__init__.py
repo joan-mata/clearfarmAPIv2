@@ -34,8 +34,8 @@ def create_app():
     app.register_blueprint(inserts_bp)
 
 #    # Por implementar
-#    from .insert import insert_bp
-#    app.register_blueprint(insert_bp)
+    from .insert import insert_bp
+    app.register_blueprint(insert_bp)
     
     from .search import search_bp
     app.register_blueprint(search_bp)
