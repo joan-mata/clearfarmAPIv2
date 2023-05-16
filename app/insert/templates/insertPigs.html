@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ClearFarm</title>
+    <!--    <style>-->
+    <!--        .todo {-->
+    <!--            padding: 20px;-->
+    <!--            margin: 10px;-->
+    <!--            background-color: #eee;-->
+    <!--        }-->
+    <!--    </style>-->
+</head>
+
+<body>
+    <h1>ClearFarm</h1>
+    <hr>
+    <div class="postClass">
+        <form method="post" enctype="multipart/form-data">
+
+            <p>
+                <b> You want insert data of PIGS </b>
+            </p>
+            
+            <p>
+                <b> Required: </b>
+                <br>
+                Trial:
+                <select name="enterprise" id="collections">
+                    <option value="1"> Trial 1 </option>
+                    <option value="2"> Trial 2 </option>
+                </select>
+                <br>
+                    
+                Peek:
+                <input type="text" maxlength="2">
+            </p>
+            
+            <p>
+                <b> Devices: </b>
+                <br>
+                Insert CSV file of TEMPERATURE:
+                <input type="file" name="file_temperature" accept=".csv">
+                <br>
+                
+                Insert CSV file of CO2:
+                <input type="file" name="file_co2" accept=".csv">
+                <br>
+                    
+                Insert CSV file of HUMIDITY:
+                <input type="file" name="file_humidity" accept=".csv">
+                <br>
+                
+                Insert CSV file of NH3:
+                <input type="file" name="file_nh3" accept=".csv">
+                <br>
+
+                Insert CSV file of BEHAVIOUR:
+                <input type="file" name="file_behaviour" accept=".csv">
+                <br>
+                
+                Insert CSV file of ACTIVITÉ:
+                <input type="file" name="file_activite" accept=".csv">
+                <br>
+            </p>
+            
+            <p>
+                <b> Sensors: </b>
+            </p>
+            
+            <p>
+                <b> Transportation: <b>
+
+            </p>
+            
+            <button type="submit">POST</button>
+        </form>
+    </div>
+</body>
+
+</html>

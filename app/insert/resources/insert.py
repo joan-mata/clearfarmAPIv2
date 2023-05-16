@@ -5,19 +5,13 @@ from app import msg_dict
 from .. import insert_bp
 
 
-@insert_bp.route('/insert', methods=['POST'])
+@insert_bp.route('/insert/cow/', methods=['GET', 'POST'])
 def insert():
     '''
     Insert data n REST-API.
     If mandatory you use POST method.
     
     Args: {
-        animal: {
-            def: "is the type of animal we want insert.",
-            type: string,
-            required: yes,
-            values: ['cow', 'pig']
-        },
         enterprise: {
             def: "is the organism that provides the data.",
             type: string,
@@ -44,8 +38,10 @@ def insert():
     }
     '''
     
-    value_return = msg_dict["error_no_post"]
+    #value_return = msg_dict["error_no_post"]
     
+    value_return = render_template('insert/farmPOST.html')
+            
     if request.method == 'POST':
         
         value_return = msg_dict["ok_insert"]

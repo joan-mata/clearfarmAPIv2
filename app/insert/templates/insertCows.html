@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ClearFarm</title>
+    <!--    <style>-->
+    <!--        .todo {-->
+    <!--            padding: 20px;-->
+    <!--            margin: 10px;-->
+    <!--            background-color: #eee;-->
+    <!--        }-->
+    <!--    </style>-->
+</head>
+
+<body>
+    <h1>ClearFarm</h1>
+    <hr>
+    <div class="postClass">
+        <form method="post" enctype="multipart/form-data">
+            <p>
+                <b> You want insert data of COWS </b>
+            </p>
+            
+            
+            <p>
+                <b> Insert CSV file: </b>
+                <input type="file" name="csvfile" accept=".csv">
+            </p>
+            
+            <p>
+                <b> Collection: </b>
+                <select name="enterprise" id="collections">
+                    <option value="connectTerra"> ConnectTerra </option>
+                    <option value="vet"> Vet </option>
+                    <option value="smarxTec"> SmarxTec </option>
+                    <option value="covap"> Covap </option>
+                    <option value="welfare"> Welfare </option>
+                    <option value="reference"> Reference </option>
+                </select>
+            </p>
+            
+            <p>
+                <b> Select Key </b>
+                (only if the first time to insert this enterprise)
+                <select name="enterprise" id="collections">
+                    <option value="cowId"> cowId </option>
+                    <option value="cowTag"> cowTag </option>
+                    <option value="official_cowId"> official_cowId </option>
+                </select>
+            </p>
+            
+            <button type="submit">POST</button>
+        </form>
+    </div>
+</body>
+
+</html>
