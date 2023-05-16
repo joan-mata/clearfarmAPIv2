@@ -47,6 +47,6 @@ def insert():
         value_return = msg_dict["ok_insert"]
     
     
-    return value_return
+    return render_template('insert/insertCows.html')
 
             
