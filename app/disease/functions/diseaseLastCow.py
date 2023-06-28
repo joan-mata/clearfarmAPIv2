@@ -24,7 +24,9 @@ def diseaseLastCow(disease, animalNum):
     date = [0, 0, 0] #[mm, dd, yy]
     item_date = [0, 0, 0] #[mm, dd, yy]
     for item in data:
-        item_date[0] = int(item["dateStart"][:2])
+        date_aux = item["dateStart"]
+        print("AUX:", date_aux.index("/"))
+        item_date[0] = int(item["dateStart"][:value])
         item_date[1] = int(item["dateStart"][3:5])
         item_date[2] = int(item["dateStart"][6:])
         
