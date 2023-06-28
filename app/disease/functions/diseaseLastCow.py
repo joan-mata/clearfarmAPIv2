@@ -25,11 +25,22 @@ def diseaseLastCow(disease, animalNum):
     item_date = [0, 0, 0] #[mm, dd, yy]
     for item in data:
         date_aux = item["dateStart"]
-        print("AUX:", date_aux.index("/"))
-        item_date[0] = int(item["dateStart"][:value])
-        item_date[1] = int(item["dateStart"][3:5])
-        item_date[2] = int(item["dateStart"][6:])
         
+        value1 = date_aux.index("/")
+        value2 = date_aux[value1+1:].index("/")
+        
+        print("AUX1:", value1)
+        print("AUX2:", value2)
+        
+        item_date[0] = int(item["dateStart"][:value1])
+        item_date[1] = int(item["dateStart"][(value1+1):value2])
+        item_date[2] = int(item["dateStart"][(value2+1):])
+        
+        print("DATE:", date_aux)
+        print("MM:", item_date[0])
+        print("DD:", item_date[1])
+        print("YYYY:", item_date[2])
+
         #analyze year
         if item_date[2] > date[2]:
             date[0] = item_date[0]
