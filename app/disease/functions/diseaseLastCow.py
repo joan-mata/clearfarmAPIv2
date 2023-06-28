@@ -27,7 +27,7 @@ def diseaseLastCow(disease, animalNum):
         date_aux = item["dateStart"]
         
         value1 = date_aux.index("/")
-        value2 = date_aux[value1+1:].index("/")
+        value2 = date_aux[value1+1:].index("/") + value1 + 1
         
         print("DATE:", date_aux)
         print("AUX1:", value1)
