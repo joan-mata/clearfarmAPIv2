@@ -23,7 +23,7 @@ def diseaseLastFarm(disease, farmID):
         
     if data:
         return_data = []
-        for item in list_cowId: #each item is a dictionary
+        for item in data: #each item is a dictionary
             if item[disease] != "":
                 disease_value = diseaseLastCow.diseaseLastCow(disease, item["official_cowID"])
                 
