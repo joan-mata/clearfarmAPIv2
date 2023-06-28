@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template
 
-from app import msg_dict
+from app import msg_dict, db_cows, db_pigs
 
 from .. import insert_bp
 
