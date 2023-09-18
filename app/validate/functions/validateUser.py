@@ -11,4 +11,4 @@ def validateUser(user, hash):
     '''
     query_result = searchUser(user)
     validated = true if len(query_result) and query_result[0]['hash']==hash else false
-return validated
+    return validated
