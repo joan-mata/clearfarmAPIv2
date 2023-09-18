@@ -42,6 +42,10 @@ def create_app():
     
     from .welfare import welfare_bp
     app.register_blueprint(welfare_bp)
+
+    from .validate import validate_bp
+    app.register_blueprint(validate_bp)
+
     
     return app
     
@@ -112,6 +116,11 @@ msg_dict = {
         "type": "information",
         "name": "ok_insert",
         "text": "Your POST method have been sent correctly."
+    },
+    "user_not_found":{
+        "type": "information",
+        "name": "user_not_found",
+        "text": "User not found or invalid password."
     }
 
 }
