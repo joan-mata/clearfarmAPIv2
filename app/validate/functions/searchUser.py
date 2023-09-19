@@ -11,4 +11,4 @@ def searchUser(login):
     '''
     query_result = list(db_users["admin"].find({'user': login}))
     user = query_result[0] if len(query_result) else {}
-return user
+    return user
