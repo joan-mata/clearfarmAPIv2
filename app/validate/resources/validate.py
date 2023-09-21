@@ -31,13 +31,16 @@ def validate():
     }
         
     '''
-    login = request.args.get('login', default = 'none', type = str)
-    hash = request.args.get('hash', default = 'none', type = str)
-    
-    #Check values we need
-    #Values are required: login, hash
-    validated = validateUser(login, hash)
-    return validated if validated else msg_dict["user_not_found"] 
+    if request.method=='POST':
+        login, hash = recoveryForm.recoveryForm()
+
+        print(f'login: {login} hash:{hash}') #debug
+        #Check values we need
+        #Values are required: login, hash
+        validated = validateUser(login, hash)
+        return validated if validated else msg_dict["user_not_found"] 
+
+    return "Invalid request"
   
 
             
