@@ -12,9 +12,11 @@ def validateUser(user, hash):
     '''
     query_result = searchUser(user)
 
-    validated = true if len(query_result) and query_result[0]['hash']==decoded_input_hash else false
+    validated = True if len(query_result) and query_result[0]['hash']==hash else False
     #decoded_input_hash = base64.b64decode(hash)
-    print('user hash input: {}'.format(hash)) #debug
-    print('db hash: {}'.format(query_result[0]['hash'])) #debug
+    print(f'user hash input: {hash}') #debug
+    if len(query_result):
+      print('db hash: {}'.format(query_result[0]['hash'])) #debug
+      print('Are equal? {}'.format(query_result[0]['hash']==hash))#debug
 
     return validated
