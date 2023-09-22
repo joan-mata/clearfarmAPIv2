@@ -11,11 +11,10 @@ def validateUser(loginInfo):
     '''
     user = searchUser.searchUser(loginInfo['user'])
     print(f'validating hash from db user: {user}') #debug
-    decoded_db_hash = user['password'].decode()
-    print(f'decode: {decoded_db_hash}') #debug
-    decoded_hex_db_hash = decoded_db_hash.hex()
-    print(f'hex: {decoded_hex_db_hash}') #debug
-    print(f"Are equal: {decoded_hex_db_hash == loginInfo['hash']}")
+    input_pwd_to_hex = bytes.fromhex(loginInfo['hash'])
+    print(f'input_pwd_to_hex {input_pwd_to_hex}')
+  
+    print(f"Are equal: {user['password'] == input_pwd_to_hex}")
 
     validated = True if len(user) and user['password']==hash else False
     
