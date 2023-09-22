@@ -11,7 +11,7 @@ def validateUser(loginInfo):
     '''
     validated = False
     user = searchUser.searchUser(loginInfo['user'])
-    printf(f'db_ user {user}')
+    print(f'db_ user {user}')
     if len(user):
       input_pwd_to_hex = bytes.fromhex(loginInfo['hash'])
 
