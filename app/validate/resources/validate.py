@@ -45,7 +45,7 @@ def validate():
       print(22)
       print(f'data {request.get_data()}')
       print(request)
-      loginInfo = request.get_json(force = True)
+      loginInfo = request.get_json()
       print(3)
       print(f"login: {loginInfo['user']} hash: {loginInfo['hash']}") #debug
       #Check values we need
