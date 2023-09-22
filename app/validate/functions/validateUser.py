@@ -10,17 +10,9 @@ def validateUser(loginInfo):
     provided one, False otherwise.
     '''
     user = searchUser.searchUser(loginInfo['user'])
-    print(f'validating hash from db user: {user}') #debug
-    input_pwd_to_hex = bytes.fromhex(loginInfo['hash'])
-    print(f'input_pwd_to_hex {input_pwd_to_hex}')
-  
-    print(f"Are equal: {user['password'] == input_pwd_to_hex}")
-
-    validated = True if len(user) and user['password']==hash else False
     
-    print(f"user hash input: {loginInfo['hash']}") #debug
-    if len(user): #debug
-      print(f"db hash: {user['password']}") #debug
-      print(f"Are equal? {user['password'] == loginInfo['hash']}")#debug
-
+    input_pwd_to_hex = bytes.fromhex(loginInfo['hash'])
+    
+    validated = True if len(user) and user['password']==input_pwd_to_hex else False
+    
     return validated
