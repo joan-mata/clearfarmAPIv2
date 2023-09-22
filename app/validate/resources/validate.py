@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 from app import msg_dict
 
@@ -11,19 +11,25 @@ def validate():
     validate user within REST-API.
     
     Args: {
-        login:  {   def: "Front-end user's login"
-                    type: string,
-                    required: For the user's search it is required,
-                    default: 'none'
-                    values: "any alphanumric in an string"                      
-                }
-        hash:   {   def: "Front-end user's password's hash"
-                    type: string,
-                    required: For the user's search it is required,
-                    default: 'none'
-                    values: "any alphanumric in an string"                      
-                }                        
-    }
+        loginInfo: {  def: "Front-end user's login json"
+                      type: json,
+                      required: For the user's search it is required,
+                      default: 'none'
+                      fields:
+                        user:{  def: "Front-end user's login"
+                                type: string,
+                                required: For the user's search it is required,
+                                default: 'none'
+                                values: "any alphanumric in an string"                      
+                      }
+                        hash:{  def: "Front-end user's password's hash"
+                                type: string,
+                                required: For the user's search it is required,
+                                default: 'none'
+                                values: "any alphanumric in an string"                      
+                      }                        
+                    }
+    }                
     
     Return: {
         true: "If the user has been validated correctly"
@@ -31,16 +37,14 @@ def validate():
     }
         
     '''
-    if request.method=='POST':
-        login, hash = recoveryForm.recoveryForm()
+    loginInfo = json.get_json(force = True)
+    print(f"login: {loginInfo['user']} hash: {loginInfo['hash']}") #debug
+    #Check values we need
+    #Values are required: loginInfo
+    validated = validateUser(loginInfo)
+    return validated if validated else msg_dict["user_not_found"] 
 
-        print(f'login: {login} hash:{hash}') #debug
-        #Check values we need
-        #Values are required: login, hash
-        validated = validateUser(login, hash)
-        return validated if validated else msg_dict["user_not_found"] 
-
-    return "Invalid request"
+  
   
 
             
