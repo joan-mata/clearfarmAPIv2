@@ -121,7 +121,12 @@ msg_dict = {
         "type": "information",
         "name": "user_not_found",
         "text": "User not found or invalid password."
-    }
+    },
+    "request_method_error":{
+        "type": "error",
+        "name": "request_method_error",
+        "text": "POST request required.",
+    },
 
 }
     
