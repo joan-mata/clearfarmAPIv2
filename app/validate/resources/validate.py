@@ -38,8 +38,11 @@ def validate():
     }
         
     '''
+    print(1)
     if request.method == 'POST':
+      print(2)
       loginInfo = request.get_json(force = True)
+      print(3)
       print(f"login: {loginInfo['user']} hash: {loginInfo['hash']}") #debug
       #Check values we need
       #Values are required: loginInfo
