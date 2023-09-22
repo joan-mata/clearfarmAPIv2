@@ -9,7 +9,7 @@ def validateUser(loginInfo):
     :return: True if the stored user's password's hashcode matches with the 
     provided one, False otherwise.
     '''
-    query_result = searchUser(loginInfo['user'])
+    query_result = searchUser.searchUser(loginInfo['user'])
 
     validated = True if len(query_result) and query_result[0]['hash']==hash else False
     #decoded_input_hash = base64.b64decode(hash)
