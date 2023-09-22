@@ -5,10 +5,11 @@ def validateUser(loginInfo):
     Validates if the stored user's hash matches with the form-provided one
     
     :param loginInfo: Json including the user login and password's hash.
-    :return: True if the stored user's password's hashcode matches with the 
-    provided one, False otherwise.
+    :return: a dictionary {found: 1/0, validated: 1/0 } indicating if the 
+    user has been found (1) and if the stored user's password's hashcode matches with the 
+    provided one (1).
     '''
-    validated = False
+    result = {'found': 0, 'validated': 0}
     user = searchUser.searchUser(loginInfo['user'])
     print(f'db_ user {user}')
     if len(user):
@@ -16,7 +17,8 @@ def validateUser(loginInfo):
       #input_pwd_to_hex = loginInfo['hash']
 
       print(f"Are equal: \n {input_pwd_to_hex} \n {user['password']} \n {user['password'] == input_pwd_to_hex}")
-     
-      validated = True if len(user) and user['password']==input_pwd_to_hex else False
+
+      result['found']=1
+      result['validated'] = 1 if user['password']==input_pwd_to_hex else 0
     
-    return validated
+    return result
