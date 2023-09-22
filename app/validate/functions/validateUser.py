@@ -11,9 +11,14 @@ def validateUser(loginInfo):
     '''
     user = searchUser.searchUser(loginInfo['user'])
     print(f'validating hash from user: {user}') #debug
+    decoded_db_hash = user['password'].decode()
+    print(f'decode: {decoded_db_hash}') #debug
+    decoded_hex_db_hash = decoded_db_hash.hex()
+    print(f'hex: {decoded_hex_db_hash}') #debug
+    print(f"Are equal: {user['password']== decoded_hex_db_hash}")
 
     validated = True if len(user) and user['password']==hash else False
-    #decoded_input_hash = base64.b64decode(hash)
+    
     print(f"user hash input: {loginInfo['hash']}") #debug
     if len(user): #debug
       print(f"db hash: {user['password']}") #debug
