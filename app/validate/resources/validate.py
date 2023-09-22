@@ -41,6 +41,9 @@ def validate():
     print(1)
     if request.method == 'POST':
       print(2)
+      print(f'content-type {request.content_type}')
+      print(22)
+      print(f'data {request.get_data()}')
       print(request)
       loginInfo = request.get_json(force = True)
       print(3)
