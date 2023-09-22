@@ -1,5 +1,4 @@
 from . import searchUser
-import base64
 
 def validateUser(loginInfo):
     '''
@@ -13,7 +12,8 @@ def validateUser(loginInfo):
     user = searchUser.searchUser(loginInfo['user'])
     print(f'db_ user {user}')
     if len(user):
-      input_pwd_to_hex = bytes.fromhex(loginInfo['hash'])
+      #input_pwd_to_hex = bytes.fromhex(loginInfo['hash'])
+      input_pwd_to_hex = loginInfo['hash']
 
       print(f"Are equal: \n {input_pwd_to_hex} \n {user['password']} \n {user['password'] == input_pwd_to_hex}")
      
