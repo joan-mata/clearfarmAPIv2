@@ -44,8 +44,7 @@ def validate():
       print(f"login: {loginInfo['user']} hash: {loginInfo['hash']}") #debug
       #Check values we need
       #Values are required: loginInfo
-      validated = validateUser.validateUser(loginInfo)
-      return validated if validated else msg_dict["user_not_found"] 
+      return validateUser.validateUser(loginInfo) 
     return msg_dict["request_method_error"]
   
   
