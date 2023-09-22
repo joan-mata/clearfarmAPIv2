@@ -39,18 +39,12 @@ def validate():
         
     '''
     print(1)
-    if request.method == 'POST':
-      print(2)
-      print(f'content-type {request.content_type}')
-      print(22)
-      print(f'data {request.get_data()}')
-      print(request)
-      loginInfo = request.get_json()
-      print(3)
+    if request.method == 'POST':      
+      loginInfo = request.get_json()      
       print(f"login: {loginInfo['user']} hash: {loginInfo['hash']}") #debug
       #Check values we need
       #Values are required: loginInfo
-      validated = validateUser(loginInfo)
+      validated = validateUser.validateUser(loginInfo)
       return validated if validated else msg_dict["user_not_found"] 
     return msg_dict["request_method_error"]
   
