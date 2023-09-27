@@ -1,4 +1,6 @@
 from flask import Flask, session
+from flask_cors import CORS
+
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
@@ -17,7 +19,7 @@ def create_app():
     #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "abcd1234"
     CORS(app)
-    
+
     #db.init_app(app)
 
     # Registro de los Blueprints
