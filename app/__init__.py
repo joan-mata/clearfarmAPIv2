@@ -16,6 +16,7 @@ def create_app():
     app = Flask(__name__)
     #app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.secret_key = "abcd1234"
+    CORS(app)
     
     #db.init_app(app)
 
