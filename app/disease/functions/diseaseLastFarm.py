@@ -21,7 +21,7 @@ def diseaseLastFarm(disease, farmID):
     return_data = 'none'
     data = list(db_cows["vet"].find({"farmID": farmID, "dateStart": '10/31/2022'},{"_id": 0, disease: 1,  "official_cowID": 1, "dateStart": 1}))
       
-    return_data = []
+    return_data = data
     
     # for item in data: #each item is a dictionary
     #     if item[disease] != "":
