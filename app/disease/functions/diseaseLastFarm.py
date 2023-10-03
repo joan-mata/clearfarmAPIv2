@@ -19,7 +19,7 @@ def diseaseLastFarm(disease, farmID):
     }
     '''
     return_data = 'none'
-    data = list(db_cows["vet"].find({"farmID": farmID, "dateStart": '10/31/2022'},{"_id": 0, disease: 1,  "official_cowID": 1, "dateStart": 1}))
+    data = list(db_cows["vet"].find({"farmID": farmID, "dateStart": '5/5/2021'},{"_id": 0, disease: 1,  "official_cowID": 1, "dateStart": 1}))
       
     return_data = data
     
