@@ -55,8 +55,8 @@ def create_app():
     from .validate import validate_bp
     app.register_blueprint(validate_bp)
 
-    from .welfare_index import welfare_index_bp
-    app.register_blueprint(welfare_index_bp)
+    # from .welfare_index import welfare_index_bp
+    # app.register_blueprint(welfare_index_bp)
     
     return app
     
