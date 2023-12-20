@@ -4,12 +4,6 @@ from flask_cors import CORS
 from pymongo import MongoClient
 
 client = MongoClient('localhost', 27017)
-# client = MongoClient(
-#     host = '52.188.228.36:27017', # <-- IP and port go here
-#     serverSelectionTimeoutMS = 3000, # 3 second timeout
-#     username="azureuser",
-#     password="clearfarm13579$",
-# )
 #db_users = client.users
 
 #db_cows = client["tests"]
